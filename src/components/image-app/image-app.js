@@ -13,5 +13,14 @@ function controller() {
     description: 'Really, really cute bunny'
   };
 
-  this.tabs = [ 'details', 'thumbnail', 'full' ];
+  this.tabs = [ 'all', 'details', 'thumbnail', 'full' ];
+
+  this.updateView = function() {
+    this.showDetail = (this.tabName === 'details') || (this.tabName === 'all');
+    this.showThumbnail = (this.tabName === 'thumbnail') || (this.tabName === 'all');
+    this.showFull = (this.tabName === 'full') || (this.tabName === 'all');
+  };
+
+  this.tabName = 'all';
+  this.updateView();
 }

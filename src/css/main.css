@@ -1,9 +1,15 @@
 .img-view {
   border: 1px solid;
   padding: 5px;
+  margin: 5px;
 }
 
 .full-view img {
   max-width: 800px;
   width: 100%
+}
+
+#view-selector {
+  padding: 5px;
+  margin: 5px;
 }

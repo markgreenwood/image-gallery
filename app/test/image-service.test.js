@@ -18,7 +18,7 @@ describe('image service', () => {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it ('get images', (done) => {
+  it ('gets images', (done) => {
     const images = [1, 2, 3];
     $httpBackend
       .expectGET('/api/images')
@@ -27,6 +27,28 @@ describe('image service', () => {
     imageService.get()
       .then((allImages) => {
         expect(allImages).to.deep.equal(images);
+        done();
+      })
+      .catch(done);
+
+    $httpBackend.flush();
+  });
+
+  it ('adds image', (done) => {
+    const image = {
+      title: 'Picture',
+      link: 'http://www.example.com',
+      description: 'This is a boring test picture'
+    };
+
+    $httpBackend
+      .expectPOST('/api/images', image)
+      .respond(image);
+
+    imageService
+      .add(image)
+      .then((savedImage) => {
+        expect(savedImage).to.deep.equal(image);
         done();
       })
       .catch(done);

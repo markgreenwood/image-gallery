@@ -9,8 +9,9 @@ export default function imageService($http ,apiUrl) {
     remove(/* id */) {
 
     },
-    add(/* image */) {
-
+    add(image) {
+      return $http.post(`${apiUrl}/images`, image)
+        .then(res => res.data);
     }
   };
 }

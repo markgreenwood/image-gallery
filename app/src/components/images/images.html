@@ -1,0 +1,13 @@
+<section>
+  <span id="view-selector">
+    <label>Select a view:</label>
+    <select ng-model="app.tabName" ng-options="tab for tab in app.tabs" ng-change="app.updateView()"></select>
+  </span>
+  <ul>
+    <li ng-repeat="image in app.images">
+      <image-detail image="image" ng-show="app.showDetail"></image-detail>
+      <image-thumbnail image="image" ng-show="app.showThumbnail"></image-thumbnail>
+      <image-full image="image" ng-show="app.showFull"></image-full>
+    </li>
+  </ul>
+</section>

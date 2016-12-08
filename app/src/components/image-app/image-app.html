@@ -1,9 +1,0 @@
-<section>
-  <span id="view-selector">
-    <label>Select a view:</label>
-    <select ng-model="app.tabName" ng-options="tab for tab in app.tabs" ng-change="app.updateView()"></select>
-  </span>
-  <image-detail image="app.img" ng-show="app.showDetail"></image-detail>
-  <image-thumbnail image="app.img" ng-show="app.showThumbnail"></image-thumbnail>
-  <image-full image="app.img" ng-show="app.showFull"></image-full>
-</section>

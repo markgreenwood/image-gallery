@@ -1,4 +1,5 @@
-import template from './image-app.html';
+import template from './images.html';
+import styles from './images.css';
 
 export default {
   template,
@@ -6,12 +7,18 @@ export default {
   controllerAs: 'app'
 };
 
-function controller() {
-  this.img = {
-    title: 'David Zabriskie Time Trial',
-    link: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Dave_Zabriskie_-_USA_Pro_Time_Trial.jpg/1280px-Dave_Zabriskie_-_USA_Pro_Time_Trial.jpg?1481125420015',
-    description: 'An extremely fast time trialist, David Zabriskie has clocked an average speed of 54.676 km/h (34 mph) in Tour de France time trials.'
-  };
+controller.$inject = ['imageService'];
+
+function controller(images) {
+
+  this.styles = styles;
+
+  this.loading = true;
+
+  images.get().then(images => {
+    this.loading = false;
+    this.images = images;
+  });
 
   this.tabs = [ 'all', 'details', 'thumbnail', 'full' ];
 

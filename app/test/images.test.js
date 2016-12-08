@@ -54,6 +54,17 @@ describe ('images component', () => {
         done();
       });
     });
+
+    it ('adds an image', done => {
+      const component = $component('images', { imageService });
+      component.add(image);
+
+      setTimeout(() => {
+        expect(images.length).to.equal(3);
+        expect(images[2]).to.deep.equal(image);
+        done();
+      });
+    });
   });
 
 });

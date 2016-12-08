@@ -20,6 +20,15 @@ function controller(images) {
     this.images = images;
   });
 
+  this.add = image => {
+    this.loading = true;
+    images.add(image)
+      .then(savedImage => {
+        this.loading = false;
+        this.images.push(savedImage);
+      });
+  };
+  
   this.tabs = [ 'all', 'details', 'thumbnail', 'full' ];
 
   this.updateView = function() {

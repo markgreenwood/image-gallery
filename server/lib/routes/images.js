@@ -6,7 +6,6 @@ const Image = require('../models/image');
 router
   .get('/', (req, res, next) => {
     const query = {};
-    
     Image.find(query)
       .select('title link description')
       .lean()
@@ -15,18 +14,24 @@ router
   })
   
   .get('/:id', (req, res, next) => {
-
+    Image.findById(req.params.id)
+      .select('title link description')
+      .lean()
+      .then(image => res.send(image))
+      .catch(next);
   })
 
   .delete('/:id', (req, res, next) => {
 
   })
 
-  .post('/', (req, res, next) => {
-
+  .post('/', bodyParser, (req, res, next) => {
+    new Image(req.body).save()
+      .then(savedImage => res.send(savedImage))
+      .catch(next);
   })
 
-  .put('/:id', (req, res, next) => {
+  .put('/:id', bodyParser, (req, res, next) => {
 
   });
 

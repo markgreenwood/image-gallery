@@ -60,4 +60,14 @@ describe('image', () => {
       .catch(done);
   });
 
+  it ('GET /api/images after POST', done => {
+    request
+      .get('/api/images')
+      .then(res => {
+        expect(res.body).to.deep.equal([ bunny ]);
+        done();
+      })
+      .catch(done);
+  });
+
 });

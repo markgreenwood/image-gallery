@@ -13,3 +13,8 @@
   padding: 5px;
   margin: 5px;
 }
+
+td {
+  vertical-align: top;
+  padding: 5px;
+}

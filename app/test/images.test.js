@@ -1,3 +1,4 @@
+/* globals angular, chai */
 describe ('images component', () => {
 
   const { expect } = chai;
@@ -30,7 +31,7 @@ describe ('images component', () => {
 
     const image = {
       title: 'Bean walking on the Moon',
-      link: 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwi2ht3mt-PQAhUY_WMKHe07DOEQjRwIBw&url=http%3A%2F%2Fwww.armaghplanet.com%2Fblog%2Fnasas-lunar-module-everything-you-need-to-know.html&psig=AFQjCNElkHw9_v_vzsGUXfYxo0JxGz0iMw&ust=1481246602199850',
+      link: 'http://www.armaghplanet.com/blog/wp-content/uploads/2011/09/Image-of-as12-46-6728.jpg',
       description: 'Alan Bean leaves the lunar module and walks on the Moon'
     };
 

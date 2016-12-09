@@ -29,7 +29,7 @@ function controller(images) {
       });
   };
   
-  this.tabs = [ 'all', 'details', 'thumbnail', 'full' ];
+  this.tabs = [ 'details', 'thumbnail', 'full' ];
 
   this.updateView = function() {
     this.showDetail = (this.tabName === 'details') || (this.tabName === 'all');
@@ -37,6 +37,6 @@ function controller(images) {
     this.showFull = (this.tabName === 'full') || (this.tabName === 'all');
   };
 
-  this.tabName = 'all';
+  this.tabName = 'thumbnail';
   this.updateView();
 }

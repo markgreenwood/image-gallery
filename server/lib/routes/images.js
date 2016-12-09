@@ -24,7 +24,7 @@ images
   .post('/', bodyParser, (req, res, next) => {
     console.log('POST request received. req.body = ', req.body);
     new Image(req.body).save()
-      .then(savedImage => res.send(savedImage))
+      .then((savedImage) => { res.send(savedImage); })
       .catch(next);
   });
 

@@ -1,15 +1,17 @@
 <section>
-  <div>
-    <label>title:</label>
-    <input ng-model="$ctrl.title">
-  </div>
-  <div>
-    <label>link:</label>
-    <input ng-model="$ctrl.link">
-  </div>
-  <div>
-    <label>description:</label>
-    <input ng-model="$ctrl.description">
-  </div>
+  <table>
+  <tr>
+    <td><label>Title:</label></td>
+    <td><input ng-model="$ctrl.title"></td>
+  </tr>
+  <tr>
+    <td><label>Link:</label></td>
+    <td><input ng-model="$ctrl.link"></td>
+  </tr>
+  <tr>
+    <td><label>Description:</label></td>
+    <td><input ng-model="$ctrl.description"></td>
+  </tr>
+  </table>
   <button ng-click="$ctrl.addNew()">Add</button>
 </section>

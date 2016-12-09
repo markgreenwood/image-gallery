@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const errorHandler = require('./error-handler');
-const morgan = require('morgan');
-
 const images = require('./routes/images');
+const morgan = require('morgan');
 
 app.use(morgan('dev'));
 

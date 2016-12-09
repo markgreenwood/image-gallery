@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
 
 const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/images';
 
-mongoose.Promise = Promise;
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function() {

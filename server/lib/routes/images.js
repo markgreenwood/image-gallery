@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const images = express.Router();
 const bodyParser = require('body-parser').json();
 const Image = require('../models/image');
 
-router
+images
   .get('/', (req, res, next) => {
     const query = {};
     Image.find(query)
@@ -21,18 +21,11 @@ router
       .catch(next);
   })
 
-  .delete('/:id', (req, res, next) => {
-
-  })
-
   .post('/', bodyParser, (req, res, next) => {
+    console.log('POST request received. req.body = ', req.body);
     new Image(req.body).save()
       .then(savedImage => res.send(savedImage))
       .catch(next);
-  })
-
-  .put('/:id', bodyParser, (req, res, next) => {
-
   });
 
-module.exports = router;
+module.exports = images;

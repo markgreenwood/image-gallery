@@ -4,6 +4,9 @@ dist: trusty
 node_js:
   - "6"
   
+services:
+  - mongodb
+
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
@@ -15,6 +18,7 @@ before_install:
     
 env:
   - CXX=g++-4.8
+  
 addons:
   apt:
     sources:

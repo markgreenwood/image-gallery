@@ -70,4 +70,14 @@ describe('image', () => {
       .catch(done);
   });
 
+  it ('DELETE /api/images/:id', done => {
+    request
+      .delete(`/api/images/${bunny._id}`)
+      .then(res => {
+        expect(res.body._id).to.equal(bunny._id);
+        done();
+      })
+      .catch(done);
+  });
+
 });

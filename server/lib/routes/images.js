@@ -26,6 +26,12 @@ images
     new Image(req.body).save()
       .then((savedImage) => { res.send(savedImage); })
       .catch(next);
+  })
+
+  .delete('/:id', (req, res, next) => {
+    Image.findByIdAndRemove(req.params.id)
+      .then(deletedImage => res.send(deletedImage))
+      .catch(next);
   });
 
 module.exports = images;

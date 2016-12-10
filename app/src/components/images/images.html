@@ -6,7 +6,8 @@
   <div ng-repeat="image in app.images">
     <image-detail image="image" ng-show="app.showDetail"></image-detail>
     <image-thumbnail image="image" ng-show="app.showThumbnail"></image-thumbnail>
-    <image-full image="image" ng-show="app.showFull"></image-full>
+    <image-full image="image" ng-show="app.showFull" remove="app.remove"></image-full>
+    <button ng-click="app.remove(image)">Delete</button>
   </div>
   <new-image add="app.add"></new-image>
 </section>

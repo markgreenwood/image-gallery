@@ -4,7 +4,7 @@ import styles from './images.css';
 export default {
   template,
   controller,
-  controllerAs: 'app'
+  controllerAs: 'imagesCtrl'
 };
 
 controller.$inject = ['imageService'];

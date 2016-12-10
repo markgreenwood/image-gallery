@@ -1,13 +1,13 @@
 <section>
   <span id="view-selector">
     <label>Select a view:</label>
-    <select ng-model="app.tabName" ng-options="tab for tab in app.tabs" ng-change="app.updateView()"></select>
+    <select ng-model="imagesCtrl.tabName" ng-options="tab for tab in imagesCtrl.tabs" ng-change="imagesCtrl.updateView()"></select>
   </span>
-  <div ng-repeat="image in app.images">
-    <image-detail image="image" ng-show="app.showDetail"></image-detail>
-    <image-thumbnail image="image" ng-show="app.showThumbnail"></image-thumbnail>
-    <image-full image="image" ng-show="app.showFull" remove="app.remove"></image-full>
-    <button ng-click="app.remove(image)">Delete</button>
+  <div ng-repeat="image in imagesCtrl.images">
+    <image-detail image="image" ng-show="imagesCtrl.showDetail"></image-detail>
+    <image-thumbnail image="image" ng-show="imagesCtrl.showThumbnail"></image-thumbnail>
+    <image-full image="image" ng-show="imagesCtrl.showFull" remove="imagesCtrl.remove"></image-full>
+    <button ng-click="imagesCtrl.remove(image)">Delete</button>
   </div>
-  <new-image add="app.add"></new-image>
+  <new-image add="imagesCtrl.add"></new-image>
 </section>

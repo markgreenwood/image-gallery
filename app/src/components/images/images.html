@@ -1,13 +1,18 @@
 <section>
   <span id="view-selector">
     <label>Select a view:</label>
-    <select ng-model="imagesCtrl.tabName" ng-options="tab for tab in imagesCtrl.tabs" ng-change="imagesCtrl.updateView()"></select>
+    <select class="styled-select blue semi-square" ng-model="imagesCtrl.tabName" ng-options="tab for tab in imagesCtrl.tabs" ng-change="imagesCtrl.updateView()"></select>
   </span>
-  <div ng-repeat="image in imagesCtrl.images">
-    <image-detail image="image" ng-show="imagesCtrl.showDetail"></image-detail>
-    <image-thumbnail image="image" ng-show="imagesCtrl.showThumbnail"></image-thumbnail>
-    <image-full image="image" ng-show="imagesCtrl.showFull" remove="imagesCtrl.remove"></image-full>
-    <button ng-click="imagesCtrl.remove(image)">Delete</button>
+  <div ng-class="imagesCtrl.styles['loader']" ng-if="imagesCtrl.loading">Loading...</div>
+  <div ng-repeat="image in imagesCtrl.images" ng-hide="imagesCtrl.loading" class="img-view">
+    <span>
+      <image-detail image="image" ng-show="imagesCtrl.showDetail"></image-detail>
+      <image-thumbnail image="image" ng-show="imagesCtrl.showThumbnail"></image-thumbnail>
+      <image-full image="image" ng-show="imagesCtrl.showFull" remove="imagesCtrl.remove"></image-full>
+    </span>
+    <span>
+      <button ng-class="imagesCtrl.styles['del-btn']" ng-click="imagesCtrl.remove(image)">Delete</button>
+    </span>
   </div>
   <new-image add="imagesCtrl.add"></new-image>
 </section>

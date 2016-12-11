@@ -39,14 +39,14 @@ function controller(images) {
       });
   };
   
-  this.tabs = [ 'details', 'thumbnail', 'full' ];
+  this.tabs = [ 'Details', 'Thumbnail', 'Full' ];
 
   this.updateView = function() {
-    this.showDetail = (this.tabName === 'details') || (this.tabName === 'all');
-    this.showThumbnail = (this.tabName === 'thumbnail') || (this.tabName === 'all');
-    this.showFull = (this.tabName === 'full') || (this.tabName === 'all');
+    this.showDetail = (this.tabName === 'Details');
+    this.showThumbnail = (this.tabName === 'Thumbnail');
+    this.showFull = (this.tabName === 'Full');
   };
 
-  this.tabName = 'thumbnail';
+  this.tabName = 'Thumbnail';
   this.updateView();
 }

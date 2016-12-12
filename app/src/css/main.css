@@ -2,6 +2,8 @@
   border: 1px solid;
   padding: 5px;
   margin: 5px;
+  border-radius: 5px;
+  background: beige;
 }
 
 .full-view img {
@@ -20,5 +22,5 @@ td {
 }
 
 body {
-  font-family: Georgia;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

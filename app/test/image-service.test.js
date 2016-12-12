@@ -1,4 +1,3 @@
-/* globals angular, chai */
 describe('image service', () => {
   const { expect } = chai;
 

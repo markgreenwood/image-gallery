@@ -6,6 +6,11 @@
   "scripts": {
     "test": "cd app && npm i && npm test && cd ../server && npm i && npm test"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "author": "Mark Greenwood (mrkjgreenwood@gmail.com)",
   "license": "ISC"
 }

@@ -2,6 +2,8 @@
   border: 1px solid;
   padding: 5px;
   margin: 5px;
+  border-radius: 5px;
+  background: beige;
 }
 
 .full-view img {
@@ -12,4 +14,13 @@
 #view-selector {
   padding: 5px;
   margin: 5px;
+}
+
+td {
+  vertical-align: top;
+  padding: 5px;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

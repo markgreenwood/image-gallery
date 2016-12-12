@@ -1,7 +1,7 @@
 <section>
   <span id="view-selector">
     <label>Select a view:</label>
-    <select class="styled-select blue semi-square" ng-model="imagesCtrl.tabName" ng-options="tab for tab in imagesCtrl.tabs" ng-change="imagesCtrl.updateView()"></select>
+    <select ng-class="imagesCtrl.styles['selector']" ng-model="imagesCtrl.tabName" ng-options="tab for tab in imagesCtrl.tabs" ng-change="imagesCtrl.updateView()"></select>
   </span>
   <div ng-class="imagesCtrl.styles['loader']" ng-if="imagesCtrl.loading">Loading...</div>
   <div ng-repeat="image in imagesCtrl.images" ng-hide="imagesCtrl.loading" class="img-view">

@@ -3,10 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/main.js',
   output: {
     path: './build',
-    filename: 'app.js'
+    filename: 'main.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -29,8 +29,8 @@ module.exports = {
         presets: ['es2015']
       }
     }, {
-      test: /\.css/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      test: /\.scss/,
+      loader: ExtractTextPlugin.extract('style-loader!css-loader?sourceMap!sass-loader?sourceMap')
     }, {
       test: /\.html$/,
       loader: 'html-loader'

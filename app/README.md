@@ -1,28 +1,25 @@
-# Program title 
+# Image Gallery
 
 ## Description
 
-TODO: Add program description.
+Image Gallery provides storage of images via title, link to the image, and a description.
+It uses backend persistence via a Mongo database.
 
-## Code Example
+## Code Structure
 
-```
-const todo = "Write some code here."
-```
+The code is split into a frontend app and backend server in the `/app` and `/server` 
+subdirectories, respectively. The build and test can be done separately in the two
+directories. For deployment, the build info for `/app` should be changed to target the
+`/server/public` directory.
 
 ## Motivation
 
 This was written as a lab assignment for Code Fellows 401 class.
 
-## API Reference
-
-### Put in descriptions...
-
-### ...of API calls if applicable
-
 ## Tests
 
-The accompanying test suite can be run using the 'npm test' command.
+The accompanying test suites can be run using the 'npm test' command from the `/app`
+and `/server` subdirectories, as appropriate.
 
 ## Contributors
 

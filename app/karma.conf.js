@@ -15,7 +15,7 @@ module.exports = function(config) {
       './src/main.js': [ 'webpack' ],
       './test/**/*.js': [ 'babel' ]
     },
-    browsers: [ 'Chrome' ],// 'Safari' ],
+    browsers: [ 'Chrome', 'Firefox' ],// 'Safari' ],
     reporters: [ 'spec' ],
     port: 9876,
     colors: true,
@@ -26,16 +26,16 @@ module.exports = function(config) {
   };
 
   // Configuration changes for running tests on Travis CI
-  if (process.env.TRAVIS) {
-    options.customLaunchers = {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    };
-    options.browsers = ['Chrome_travis_ci', 'Firefox']; // Don't forget karma-firefox-launcher!
-    options.singleRun = true;
-  }
+  // if (process.env.TRAVIS) {
+  //   options.customLaunchers = {
+  //     Chrome_travis_ci: {
+  //       base: 'Chrome',
+  //       flags: ['--no-sandbox']
+  //     }
+  //   };
+  //   options.browsers = ['Chrome_travis_ci', 'Firefox']; // Don't forget karma-firefox-launcher!
+  //   options.singleRun = true;
+  // }
 
   config.set(options);
 };

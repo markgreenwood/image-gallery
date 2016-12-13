@@ -1,66 +1,76 @@
-.img-view {
+.full-view img {
+  max-width: 800px;
+  width: 100%; }
+
+#view-selector {
+  padding: 5px;
+  margin: 5px; }
+
+td {
+  vertical-align: top;
+  padding: 5px; }
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
+.detail-view {
+  border: 1px solid;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background: lightgray;
+  vertical-align: top; }
+.full-view {
+  border: 1px solid;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background: mintcream;
+  vertical-align: top;
+  max-width: 800px; }
+.thumbnail-view {
   border: 1px solid;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
   background: beige;
-}
-
-.full-view img {
-  max-width: 800px;
-  width: 100%
-}
-
-#view-selector {
-  padding: 5px;
-  margin: 5px;
-}
-
-td {
   vertical-align: top;
-  padding: 5px;
-}
-
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}/* Styling ideas from 
+  display: inline-block; }
+/* Styling ideas from 
 https://bavotasan.com/2011/style-select-box-using-only-css/
 */
-
-._2_-UjWSgHUCC075S8D6d6w {
+._1agfRw03w-VS9Q2LgbAmSS {
   background-color: darkred;
-  color: white;
-}
+  color: white; }
 
-.iYdxhSmbbkD1V2-olVRX {
+._27ruoPG8Yo5DN7-7yzeXu6 {
   width: 240px;
   height: 29px;
   overflow: hidden;
   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat right #ddd;
-  border: 1px solid #ccc;
-}
+  border: 1px solid #ccc; }
 
-.iYdxhSmbbkD1V2-olVRX select {
+._27ruoPG8Yo5DN7-7yzeXu6 select {
+  -webkit-appearance: none;
   background: transparent;
   width: 240px;
-  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
   font-size: 16px;
   line-height: 1;
   border: none;
   height: 29px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;
-}._1wFKma0mRVcRQgZ3XE1lq {
+  border-radius: 5px; }
+._1X7MnkLD5WTlhk_X6J5H8W {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  background: beige;
-}
+  background: beige; }
 
-.FMte6_XaF8DA8NevF42Gd {
+._1NpF_CZdusbYAYZPAJjBHx {
   background-color: darkgreen;
-  color: white
-}
+  color: white; }
+
 /*# sourceMappingURL=main.css.map*/

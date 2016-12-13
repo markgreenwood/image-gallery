@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const path = require('path');
 
@@ -12,7 +12,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new ExtractTextPlugin('main.css')
+    // new ExtractTextPlugin('main.css')
   ],
   devtool: 'source-map',
   module: {
@@ -30,10 +30,13 @@ module.exports = {
       }
     }, {
       test: /\.scss/,
-      loader: ExtractTextPlugin.extract('style-loader!css-loader?sourceMap!sass-loader?sourceMap')
+      loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap'
     }, {
       test: /\.html$/,
       loader: 'html-loader'
     }]
+  },
+  sassLoader: {
+    includePaths: ['./src/scss/partials']
   }
 };

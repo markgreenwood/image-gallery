@@ -50,13 +50,13 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./scss/main.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(3);
 	
-	var _components = __webpack_require__(3);
+	var _components = __webpack_require__(7);
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _services = __webpack_require__(20);
+	var _services = __webpack_require__(28);
 	
 	var _services2 = _interopRequireDefault(_services);
 	
@@ -32471,6 +32471,354 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(4);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".img-view {\n  border: 1px solid;\n  padding: 5px;\n  margin: 5px;\n  border-radius: 5px;\n  background: beige; }\n\n.full-view img {\n  max-width: 800px;\n  width: 100%; }\n\n#view-selector {\n  padding: 5px;\n  margin: 5px; }\n\ntd {\n  vertical-align: top;\n  padding: 5px; }\n\nbody {\n  font-family: Verdana, Geneva, Tahoma, sans-serif; }\n", "", {"version":3,"sources":["/./src/scss/src/scss/main.scss"],"names":[],"mappings":"AAAA;EACE,kBAAiB;EACjB,aAAY;EACZ,YAAW;EACX,mBAAkB;EAClB,kBAAiB,EAClB;;AAED;EACE,iBAAgB;EAChB,YACF,EAAE;;AAEF;EACE,aAAY;EACZ,YAAW,EACZ;;AAED;EACE,oBAAmB;EACnB,aAAY,EACb;;AAED;EACE,iDAAgD,EACjD","file":"main.scss","sourcesContent":[".img-view {\n  border: 1px solid;\n  padding: 5px;\n  margin: 5px;\n  border-radius: 5px;\n  background: beige;\n}\n\n.full-view img {\n  max-width: 800px;\n  width: 100%\n}\n\n#view-selector {\n  padding: 5px;\n  margin: 5px;\n}\n\ntd {\n  vertical-align: top;\n  padding: 5px;\n}\n\nbody {\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -32481,17 +32829,17 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _camelcase = __webpack_require__(4);
+	var _camelcase = __webpack_require__(8);
 	
 	var _camelcase2 = _interopRequireDefault(_camelcase);
 	
-	var _path = __webpack_require__(5);
+	var _path = __webpack_require__(9);
 	
 	var _path2 = _interopRequireDefault(_path);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var context = __webpack_require__(7);
+	var context = __webpack_require__(11);
 	
 	var _module = _angular2.default.module('components', []);
 	
@@ -32503,7 +32851,7 @@
 	exports.default = _module.name;
 
 /***/ },
-/* 4 */
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32536,7 +32884,7 @@
 
 
 /***/ },
-/* 5 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -32764,10 +33112,10 @@
 	    }
 	;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ },
-/* 6 */
+/* 10 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -32953,16 +33301,16 @@
 
 
 /***/ },
-/* 7 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./app/app.js": 8,
-		"./image-detail/image-detail.js": 10,
-		"./image-full/image-full.js": 12,
-		"./image-thumbnail/image-thumbnail.js": 14,
-		"./images/images.js": 16,
-		"./new-image/new-image.js": 18
+		"./app/app.js": 12,
+		"./image-detail/image-detail.js": 14,
+		"./image-full/image-full.js": 16,
+		"./image-thumbnail/image-thumbnail.js": 18,
+		"./images/images.js": 20,
+		"./new-image/new-image.js": 24
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -32975,11 +33323,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 7;
+	webpackContext.id = 11;
 
 
 /***/ },
-/* 8 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32988,7 +33336,7 @@
 	  value: true
 	});
 	
-	var _app = __webpack_require__(9);
+	var _app = __webpack_require__(13);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -33004,13 +33352,13 @@
 	};
 
 /***/ },
-/* 9 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = "  <header>\n    <h1>Mark's Image Gallery</h1>\n  </header>\n\n  <main>\n    <images></images>\n  </main>";
 
 /***/ },
-/* 10 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33019,7 +33367,7 @@
 	  value: true
 	});
 	
-	var _imageDetail = __webpack_require__(11);
+	var _imageDetail = __webpack_require__(15);
 	
 	var _imageDetail2 = _interopRequireDefault(_imageDetail);
 	
@@ -33033,13 +33381,13 @@
 	};
 
 /***/ },
-/* 11 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"details-view\">\n  <table>\n  <tr><td><b>Title:</b></td><td>{{ $ctrl.image.title }}</td></tr>\n  <tr><td><b>Link:</b></td><td>{{ $ctrl.image.link }}<td></tr>\n  <tr><td><b>Description:</b></td><td>{{ $ctrl.image.description }}</td></tr>\n  </table>\n</div>";
 
 /***/ },
-/* 12 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33048,7 +33396,7 @@
 	  value: true
 	});
 	
-	var _imageFull = __webpack_require__(13);
+	var _imageFull = __webpack_require__(17);
 	
 	var _imageFull2 = _interopRequireDefault(_imageFull);
 	
@@ -33062,13 +33410,13 @@
 	};
 
 /***/ },
-/* 13 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"full-view\">\n  <p><b>Title:</b> {{ $ctrl.image.title }}</p>\n  <p><b>Description:</b> {{ $ctrl.image.description }}</p>\n  <img ng-src=\"{{$ctrl.image.link}}\">\n</div>";
 
 /***/ },
-/* 14 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33077,7 +33425,7 @@
 	  value: true
 	});
 	
-	var _imageThumbnail = __webpack_require__(15);
+	var _imageThumbnail = __webpack_require__(19);
 	
 	var _imageThumbnail2 = _interopRequireDefault(_imageThumbnail);
 	
@@ -33091,13 +33439,13 @@
 	};
 
 /***/ },
-/* 15 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"thumbnail-view\">\n  <img ng-src=\"{{$ctrl.image.link}}\" width=\"100px\">\n</div>";
 
 /***/ },
-/* 16 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33106,11 +33454,11 @@
 	  value: true
 	});
 	
-	var _images = __webpack_require__(17);
+	var _images = __webpack_require__(21);
 	
 	var _images2 = _interopRequireDefault(_images);
 	
-	var _images3 = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./images.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _images3 = __webpack_require__(22);
 	
 	var _images4 = _interopRequireDefault(_images3);
 	
@@ -33167,13 +33515,56 @@
 	}
 
 /***/ },
-/* 17 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = "<section>\n  <span id=\"view-selector\">\n    <label>Select a view:</label>\n    <select ng-class=\"imagesCtrl.styles['selector']\" ng-model=\"imagesCtrl.tabName\" ng-options=\"tab for tab in imagesCtrl.tabs\" ng-change=\"imagesCtrl.updateView()\"></select>\n  </span>\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n  <div ng-repeat=\"image in imagesCtrl.images\" ng-hide=\"imagesCtrl.loading\" class=\"img-view\">\n    <span>\n      <image-detail image=\"image\" ng-show=\"imagesCtrl.showDetail\"></image-detail>\n      <image-thumbnail image=\"image\" ng-show=\"imagesCtrl.showThumbnail\"></image-thumbnail>\n      <image-full image=\"image\" ng-show=\"imagesCtrl.showFull\" remove=\"imagesCtrl.remove\"></image-full>\n    </span>\n    <span>\n      <button ng-class=\"imagesCtrl.styles['del-btn']\" ng-click=\"imagesCtrl.remove(image)\">Delete</button>\n    </span>\n  </div>\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
 
 /***/ },
-/* 18 */
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(23);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./images.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./images.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/* Styling ideas from \nhttps://bavotasan.com/2011/style-select-box-using-only-css/\n*/\n._1agfRw03w-VS9Q2LgbAmSS {\n  background-color: darkred;\n  color: white; }\n\n._27ruoPG8Yo5DN7-7yzeXu6 {\n  width: 240px;\n  height: 29px;\n  overflow: hidden;\n  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat right #ddd;\n  border: 1px solid #ccc; }\n\n._27ruoPG8Yo5DN7-7yzeXu6 select {\n  background: transparent;\n  width: 240px;\n  padding: 5px;\n  /* If you add too much padding here, the options won't show in IE */\n  font-size: 16px;\n  line-height: 1;\n  border: none;\n  height: 29px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px; }\n", "", {"version":3,"sources":["/./src/components/images/src/components/images/images.scss"],"names":[],"mappings":"AAAA;;EAEE;AAEF;EACE,0BAAyB;EACzB,aAAY,EACb;;AAED;EACE,aAAY;EACZ,aAAY;EACZ,iBAAgB;EAChB,yEAAwE;EACxE,uBAAsB,EACvB;;AAED;EACE,wBAAuB;EACvB,aAAY;EACZ,aAAY;EAAG,oEAAoE;EACnF,gBAAe;EACf,eAAc;EACd,aAAY;EACZ,aAAY;EACZ,2BAA0B;EAC1B,wBAAuB;EACvB,mBAAkB,EACnB","file":"images.scss","sourcesContent":["/* Styling ideas from \nhttps://bavotasan.com/2011/style-select-box-using-only-css/\n*/\n\n:local(.del-btn) {\n  background-color: darkred;\n  color: white;\n}\n\n:local(.selector) {\n  width: 240px;\n  height: 29px;\n  overflow: hidden;\n  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat right #ddd;\n  border: 1px solid #ccc;\n}\n\n:local(.selector) select {\n  background: transparent;\n  width: 240px;\n  padding: 5px; /* If you add too much padding here, the options won't show in IE */\n  font-size: 16px;\n  line-height: 1;\n  border: none;\n  height: 29px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+	exports.locals = {
+		"del-btn": "_1agfRw03w-VS9Q2LgbAmSS",
+		"selector": "_27ruoPG8Yo5DN7-7yzeXu6"
+	};
+
+/***/ },
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33182,11 +33573,11 @@
 	  value: true
 	});
 	
-	var _newImage = __webpack_require__(19);
+	var _newImage = __webpack_require__(25);
 	
 	var _newImage2 = _interopRequireDefault(_newImage);
 	
-	var _newImage3 = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./new-image.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _newImage3 = __webpack_require__(26);
 	
 	var _newImage4 = _interopRequireDefault(_newImage3);
 	
@@ -33225,13 +33616,56 @@
 	}
 
 /***/ },
-/* 19 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = "<section ng-class=\"$ctrl.styles['new-image']\">\n  <table>\n  <tr>\n    <td><label>Title:</label></td>\n    <td><input ng-model=\"$ctrl.title\"></td>\n  </tr>\n  <tr>\n    <td><label>Link:</label></td>\n    <td><input ng-model=\"$ctrl.link\"></td>\n  </tr>\n  <tr>\n    <td><label>Description:</label></td>\n    <td><input ng-model=\"$ctrl.description\"></td>\n  </tr>\n  </table>\n  <button ng-class=\"$ctrl.styles['add-btn']\" ng-click=\"$ctrl.addNew()\">Add</button>\n</section>";
 
 /***/ },
-/* 20 */
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(27);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./new-image.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./new-image.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._1X7MnkLD5WTlhk_X6J5H8W {\n  border: 1px solid black;\n  padding: 5px;\n  margin: 5px;\n  border-radius: 5px;\n  background: beige; }\n\n._1NpF_CZdusbYAYZPAJjBHx {\n  background-color: darkgreen;\n  color: white; }\n", "", {"version":3,"sources":["/./src/components/new-image/src/components/new-image/new-image.scss"],"names":[],"mappings":"AAAA;EACE,wBAAuB;EACvB,aAAY;EACZ,YAAW;EACX,mBAAkB;EAClB,kBAAiB,EAClB;;AAED;EACE,4BAA2B;EAC3B,aACF,EAAE","file":"new-image.scss","sourcesContent":[":local(.new-image) {\n  border: 1px solid black;\n  padding: 5px;\n  margin: 5px;\n  border-radius: 5px;\n  background: beige;\n}\n\n:local(.add-btn) {\n  background-color: darkgreen;\n  color: white\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+	exports.locals = {
+		"new-image": "_1X7MnkLD5WTlhk_X6J5H8W",
+		"add-btn": "_1NpF_CZdusbYAYZPAJjBHx"
+	};
+
+/***/ },
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33244,17 +33678,17 @@
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _camelcase = __webpack_require__(4);
+	var _camelcase = __webpack_require__(8);
 	
 	var _camelcase2 = _interopRequireDefault(_camelcase);
 	
-	var _path = __webpack_require__(5);
+	var _path = __webpack_require__(9);
 	
 	var _path2 = _interopRequireDefault(_path);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var context = __webpack_require__(21);
+	var context = __webpack_require__(29);
 	
 	var _module = _angular2.default.module('services', []);
 	
@@ -33266,11 +33700,11 @@
 	exports.default = _module.name;
 
 /***/ },
-/* 21 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./image-service.js": 22
+		"./image-service.js": 30
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33283,11 +33717,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 21;
+	webpackContext.id = 29;
 
 
 /***/ },
-/* 22 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';

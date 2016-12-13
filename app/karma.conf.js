@@ -2,7 +2,7 @@ const webpackConfig = require('./webpack.config');
 webpackConfig.entry = {};
 
 module.exports = function(config) {
-  config.set({
+  const options = {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
@@ -23,5 +23,19 @@ module.exports = function(config) {
     autoWatch: false,
     singleRun: true,
     concurrency: Infinity
-  });
+  };
+
+  // Configuration changes for running tests on Travis CI
+  if (process.env.TRAVIS) {
+    options.customLaunchers = {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    };
+    options.browsers = ['Chrome_travis_ci', 'Firefox']; // Don't forget karma-firefox-launcher!
+    options.singleRun = true;
+  }
+
+  config.set(options);
 };

@@ -15,7 +15,7 @@ module.exports = function(config) {
       './src/main.js': [ 'webpack' ],
       './test/**/*.js': [ 'babel' ]
     },
-    browsers: [ 'Firefox', 'Chrome' ],// 'Safari' ],
+    browsers: [ 'Chrome' ],// 'Safari' ],
     reporters: [ 'spec' ],
     port: 9876,
     colors: true,

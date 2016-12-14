@@ -12,6 +12,11 @@ td {
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif; }
+a {
+  border: 3px outset lightgrey;
+  text-decoration: none;
+  padding: 0.2em;
+  background-color: lightgray; }
 .detail-view {
   border: 1px solid;
   padding: 5px;
@@ -34,7 +39,7 @@ body {
   border-radius: 5px;
   background: beige;
   vertical-align: top;
-  display: inline-block; }
+  display: table-cell; }
 /* Styling ideas from 
 https://bavotasan.com/2011/style-select-box-using-only-css/
 */

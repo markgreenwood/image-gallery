@@ -20,6 +20,18 @@ export default function routes($stateProvider, $urlRouterProvider) {
     component: 'about'
   });
 
+  $stateProvider.state({
+    name: 'about.mark',
+    url: 'mark',
+    template: '<p>Mark is a full-stack developer with experience in JavaScript, Python, and C++.'
+  });
+
+  $stateProvider.state({
+    name: 'about.shadow',
+    url: 'shadow',
+    template: '<p>Shadow is Mark\'s dog. Shadow is a shelter rescue dog, and is part Australian Shepherd and part Flat-Coated Retriever.'
+  });
+
   $urlRouterProvider.otherwise('/');
 
 }

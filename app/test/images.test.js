@@ -41,6 +41,9 @@ describe ('images component', () => {
       },
       add() {
         return Promise.resolve(image);
+      },
+      remove(id) { // eslint-disable-line no-unused-vars
+        return Promise.resolve(image);
       }
     };
 
@@ -58,10 +61,26 @@ describe ('images component', () => {
     it ('adds an image', done => {
       const component = $component('images', { imageService });
       component.add(image);
+      expect(component.loading).to.be.ok;
 
       setTimeout(() => {
-        expect(images.length).to.equal(3);
-        expect(images[2]).to.deep.equal(image);
+        expect(component.images.length).to.equal(3);
+        expect(component.images[2]).to.deep.equal(image);
+        expect(component.loading).to.not.be.ok;
+        done();
+      });
+    });
+
+    it ('removes an image', done => {
+      const component = $component('images', { imageService });
+      image._id = 1;
+      component.remove(image);
+      expect(component.loading).to.be.ok;
+
+      setTimeout(() => {
+        expect(images.length).to.equal(2);
+        expect(component.images).to.deep.equal(images);
+        expect(component.loading).to.not.be.ok;
         done();
       });
     });

@@ -17,6 +17,12 @@ describe('image service', () => {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
+  const image = {
+    title: 'Picture',
+    link: 'http://www.example.com',
+    description: 'This is a boring test picture'
+  };
+
   it ('gets images', (done) => {
     const images = [1, 2, 3];
     $httpBackend
@@ -34,11 +40,6 @@ describe('image service', () => {
   });
 
   it ('adds image', (done) => {
-    const image = {
-      title: 'Picture',
-      link: 'http://www.example.com',
-      description: 'This is a boring test picture'
-    };
 
     $httpBackend
       .expectPOST('/api/images', image)
@@ -53,6 +54,25 @@ describe('image service', () => {
       .catch(done);
 
     $httpBackend.flush();
+
+  });
+
+  it ('removes image', (done) => {
+
+    $httpBackend
+      .expectDELETE('/api/images/1')
+      .respond(image);
+
+    imageService
+      .remove(1)
+      .then((deletedImage) => {
+        expect(deletedImage).to.deep.equal(image);
+        done();
+      })
+      .catch(done);
+
+    $httpBackend.flush();
+
   });
 
 });

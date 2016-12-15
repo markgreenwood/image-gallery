@@ -3,7 +3,7 @@
 ## Description
 
 Image Gallery provides storage of images via title, link to the image, and a description.
-It uses backend persistence via a Mongo database.
+It implements backend persistence via a Mongo database.
 
 ## Code Structure
 

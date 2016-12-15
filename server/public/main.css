@@ -17,6 +17,19 @@ a {
   text-decoration: none;
   padding: 0.2em;
   background-color: lightgray; }
+
+a.hilite {
+  background: steelblue;
+  color: white; }
+a {
+  border: 3px outset lightgrey;
+  text-decoration: none;
+  padding: 0.2em;
+  background-color: lightgray; }
+
+a.hilite {
+  background: steelblue;
+  color: white; }
 .detail-view {
   border: 1px solid;
   padding: 5px;

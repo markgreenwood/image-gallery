@@ -1,1 +1,7 @@
-@import 'linkstyles'
+@import 'linkstyles';
+
+img {
+  max-width: 200px;
+  float: left;
+  padding: 5px;
+}

@@ -3,9 +3,6 @@ import styles from './images.scss';
 
 export default {
   template,
-  bindings: {
-    id: '<'
-  },
   controller,
   controllerAs: 'imagesCtrl'
 };
@@ -15,8 +12,8 @@ controller.$inject = ['imageService'];
 function controller(images) {
 
   this.styles = styles;
-  this.tabs = [ 'Details', 'Thumbnail', 'Full' ];
-  this.tabName = 'Thumbnail';
+  this.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
+  this.viewType = 'Thumbnail';
 
   this.loading = true;
 
@@ -45,9 +42,9 @@ function controller(images) {
   };
 
   this.updateView = function() {
-    this.showDetail = (this.tabName === 'Details');
-    this.showThumbnail = (this.tabName === 'Thumbnail');
-    this.showFull = (this.tabName === 'Full');
+    this.showDetail = (this.viewType === 'Details');
+    this.showThumbnail = (this.viewType === 'Thumbnail');
+    this.showFull = (this.viewType === 'Full');
   };
 
   this.updateView();

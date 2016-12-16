@@ -13,7 +13,7 @@ td {
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif; }
 a {
-  border: 3px outset lightgrey;
+  border: 2px outset lightgrey;
   text-decoration: none;
   padding: 0.2em;
   background-color: lightgray; }
@@ -21,8 +21,13 @@ a {
 a.hilite {
   background: steelblue;
   color: white; }
+
+img {
+  max-width: 200px;
+  float: left;
+  padding: 5px; }
 a {
-  border: 3px outset lightgrey;
+  border: 2px outset lightgrey;
   text-decoration: none;
   padding: 0.2em;
   background-color: lightgray; }

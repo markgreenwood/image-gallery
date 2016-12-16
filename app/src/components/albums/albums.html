@@ -1,1 +1,16 @@
 <h2>Albums</h2>
+
+<div id="view-selector">
+  <label>Select an album:</label>
+  <select 
+    ng-class="albumsCtrl.styles['selector']" 
+    ng-model="albumsCtrl.currentAlbum" 
+    ng-options="album.name for album in albumsCtrl.albums" 
+    ng-change="albumsCtrl.updateView()">
+  </select>
+</div>
+
+<h2>Images</h2>
+
+<ui-view></ui-view>
+ 

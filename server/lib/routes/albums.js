@@ -1,29 +1,36 @@
 const express = require('express');
-const images = express.Router();
+const albums = express.Router();
 const bodyParser = require('body-parser').json();
+const Album = require('../models/album');
 const Image = require('../models/image');
 
-images
+albums
   .get('/', (req, res, next) => {
     const query = {};
-    Image.find(query)
-      .select('title link description')
+    Album.find(query)
+      .select('name description')
       .lean()
+      .then(albums => res.send(albums))
+      .catch(next);
+  })
+
+  .get('/:id/images', (req, res, next) => {
+    Image.find({ album: req.params.id })
       .then(images => res.send(images))
       .catch(next);
   })
   
   .get('/:id', (req, res, next) => {
-    Image.findById(req.params.id)
-      .select('title link description')
+    Album.findById(req.params.id)
+      .select('name description')
       .lean()
-      .then(image => res.send(image))
+      .then(album => res.send(album))
       .catch(next);
   })
 
   .post('/', bodyParser, (req, res, next) => {
-    new Image(req.body).save()
-      .then((savedImage) => { res.send(savedImage); })
+    new Album(req.body).save()
+      .then((savedAlbum) => { res.send(savedAlbum); })
       .catch(next);
   })
 
@@ -33,9 +40,9 @@ images
   })
 
   .delete('/:id', (req, res, next) => {
-    Image.findByIdAndRemove(req.params.id)
-      .then(deletedImage => res.send(deletedImage))
+    Album.findByIdAndRemove(req.params.id)
+      .then(deletedAlbum => res.send(deletedAlbum))
       .catch(next);
   });
 
-module.exports = images;
+module.exports = albums;

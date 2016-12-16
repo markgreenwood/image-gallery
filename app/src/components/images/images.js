@@ -12,6 +12,8 @@ controller.$inject = ['imageService'];
 function controller(images) {
 
   this.styles = styles;
+  this.tabs = [ 'Details', 'Thumbnail', 'Full' ];
+  this.tabName = 'Thumbnail';
 
   this.loading = true;
 
@@ -38,8 +40,6 @@ function controller(images) {
         if (index > -1) this.images.splice(index, 1);
       });
   };
-  
-  this.tabs = [ 'Details', 'Thumbnail', 'Full' ];
 
   this.updateView = function() {
     this.showDetail = (this.tabName === 'Details');
@@ -47,6 +47,5 @@ function controller(images) {
     this.showFull = (this.tabName === 'Full');
   };
 
-  this.tabName = 'Thumbnail';
   this.updateView();
 }

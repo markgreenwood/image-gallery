@@ -15,10 +15,16 @@ export default function routes($stateProvider, $urlRouterProvider) {
   });
 
   $stateProvider.state({
-    name: 'images',
-    url: '/images',
+    name: 'albums.images',
+    url: 'images',
     component: 'images'
   });
+
+  // $stateProvider.state({
+  //   name: 'images',
+  //   url: '/images',
+  //   component: 'images'
+  // });
 
   $stateProvider.state({
     name: 'about',

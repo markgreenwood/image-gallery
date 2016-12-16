@@ -21,8 +21,6 @@ describe('image', () => {
     request
       .get('/api/images')
       .then(res => {
-        console.log('Returned from GET /api/images');
-        console.log(res.body);
         expect(res.body).to.deep.equal([]);
         done();
       })
@@ -36,7 +34,6 @@ describe('image', () => {
   };
 
   it ('POST /api/images', done => {
-    console.log('POSTing ', bunny);
     request
       .post('/api/images')
       .send(bunny)

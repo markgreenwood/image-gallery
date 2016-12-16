@@ -3,9 +3,18 @@ import styles from './albums.scss';
 
 export default {
   template,
-  controller
+  controller,
+  controllerAs: 'albumsCtrl'
 };
 
-function controller() {
-  this.styles = styles;
+controller.$inject = [ 'albumService' ];
+
+function controller(albums) {
+  const self = this;
+  self.styles = styles;
+
+  albums.get().then(albums => {
+    self.albums = albums;
+  });
+
 }

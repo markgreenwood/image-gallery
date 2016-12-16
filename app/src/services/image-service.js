@@ -9,7 +9,6 @@ export default function imageService($http ,apiUrl) {
     remove(id) {
       return $http.delete(`${apiUrl}/images/${id}`)
         .then(res => res.data);
-
     },
     add(image) {
       return $http.post(`${apiUrl}/images`, image)

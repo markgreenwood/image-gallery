@@ -16,4 +16,8 @@ function controller(albums) {
     this.myAlbums = returnedAlbums;
   });
 
+  this.setCurrent = (albumName) => {
+    this.currentAlbum = albumName;
+  };
+
 }

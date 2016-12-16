@@ -3,6 +3,9 @@ import styles from './images.scss';
 
 export default {
   template,
+  bindings: {
+    albumId: '<'
+  },
   controller,
   controllerAs: 'imagesCtrl'
 };
@@ -11,6 +14,7 @@ controller.$inject = ['imageService'];
 
 function controller(images) {
 
+  console.log('imagesCtrl.album_id = ', this.albumId);
   this.styles = styles;
   this.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
   this.viewType = 'Thumbnail';

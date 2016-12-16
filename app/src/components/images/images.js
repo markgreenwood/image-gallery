@@ -3,6 +3,9 @@ import styles from './images.scss';
 
 export default {
   template,
+  bindings: {
+    id: '<'
+  },
   controller,
   controllerAs: 'imagesCtrl'
 };

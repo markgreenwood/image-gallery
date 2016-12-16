@@ -2,15 +2,18 @@
 
 <div id="view-selector">
   <label>Select an album:</label>
-  <select 
+  <!--<select 
     ng-class="albumsCtrl.styles['selector']" 
     ng-model="albumsCtrl.currentAlbum" 
-    ng-options="album.name for album in albumsCtrl.albums" 
+    ng-options="album.name for album in albumsCtrl.myAlbums" 
     ng-change="albumsCtrl.updateView()">
-  </select>
+  </select>-->
+  <ul>
+    <li ui-sref="album.images({ id: album._id })" ng-repeat="album in albumsCtrl.myAlbums">{{album.name}} [{{album._id}}]</li>
+  </ul>
 </div>
 
 <h2>Images</h2>
 
-<ui-view></ui-view>
+<images>Choose an album to display images</images>
  

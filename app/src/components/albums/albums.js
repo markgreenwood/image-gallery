@@ -10,11 +10,10 @@ export default {
 controller.$inject = [ 'albumService' ];
 
 function controller(albums) {
-  const self = this;
-  self.styles = styles;
+  this.styles = styles;
 
-  albums.get().then(albums => {
-    self.albums = albums;
+  albums.get().then(returnedAlbums => {
+    this.myAlbums = returnedAlbums;
   });
 
 }

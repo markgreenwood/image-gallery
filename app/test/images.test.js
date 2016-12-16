@@ -39,6 +39,9 @@ describe ('images component', () => {
       get() {
         return Promise.resolve(images);
       },
+      getAlbumImages(albumId) { // eslint-disable-line no-unused-vars
+        return Promise.resolve(images);
+      },
       add() {
         return Promise.resolve(image);
       },
@@ -84,6 +87,6 @@ describe ('images component', () => {
         done();
       });
     });
+    
   });
-
 });

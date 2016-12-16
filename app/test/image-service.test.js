@@ -75,4 +75,25 @@ describe('image service', () => {
 
   });
 
+  it ('gets images from specific album', (done) => {
+
+    const album1Images = [ 1, 2, 3 ];
+    const album2Images = [ 4, 5, 6 ]; // eslint-disable-line no-unused-vars
+
+    $httpBackend
+      .expectGET('/api/albums/1/images')
+      .respond(album1Images);
+
+    imageService
+      .getAlbumImages(1)
+      .then((returnedImages) => {
+        expect(returnedImages).to.deep.equal(album1Images);
+        done();
+      })
+      .catch(done);
+
+    $httpBackend.flush();
+
+  });
+
 });

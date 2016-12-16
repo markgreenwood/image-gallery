@@ -14,17 +14,31 @@ controller.$inject = ['imageService'];
 
 function controller(images) {
 
-  console.log('imagesCtrl.album_id = ', this.albumId);
+  // console.log('imagesCtrl.albumId = ', this.albumId);
   this.styles = styles;
   this.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
   this.viewType = 'Thumbnail';
 
   this.loading = true;
 
-  images.get().then(images => {
-    this.loading = false;
-    this.images = images;
-  });
+  // images.get().then(images => {
+  //   this.loading = false;
+  //   this.images = images;
+  // });
+
+  if (this.albumId) {
+    // images.get().then(images => {
+    images.getAlbumImages(this.albumId).then(images => {
+      this.loading = false;
+      this.images = images;
+    });
+  }
+  else {
+    images.get().then(images => {
+      this.loading = false;
+      this.images = images;
+    });
+  }
 
   this.add = image => {
     this.loading = true;

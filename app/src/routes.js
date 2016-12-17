@@ -17,11 +17,16 @@ export default function routes($stateProvider, $urlRouterProvider) {
   $stateProvider.state({
     name: 'albums.images',
     url: '/:album_id',
+    params: { albums: null },
     resolve: {
       albumId: [ '$transition$', t =>  { 
         console.log('Passed in album_id ', t.params().album_id);
         return t.params().album_id; 
-      } ]
+      } ],
+      myAlbums: [ '$transition$', t => {
+        console.log('t.params ', t.params());
+        return t.params().albums;
+      }]
     },
     component: 'images'
   });

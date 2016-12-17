@@ -4,15 +4,16 @@ import styles from './images.scss';
 export default {
   template,
   bindings: {
-    albumId: '<'
+    albumId: '<',
+    myAlbums: '='
   },
   controller,
   controllerAs: 'imagesCtrl'
 };
 
-controller.$inject = ['imageService'];
+controller.$inject = ['imageService', 'albumService'];
 
-function controller(images) {
+function controller(images, albums) {
 
   // console.log('imagesCtrl.albumId = ', this.albumId);
   this.styles = styles;
@@ -42,10 +43,24 @@ function controller(images) {
 
   this.add = image => {
     this.loading = true;
-    images.add(image)
-      .then(savedImage => {
-        this.loading = false;
-        this.images.push(savedImage);
+    albums.get()
+      .then((/*rtndAlbums*/) => {
+        // const albumLookup = {};
+        // rtndAlbums.forEach((a) => {
+        //   albumLookup[a.name] = a._id;
+        // });
+        if (image.album /* is in database already */) {
+          // TODO: replace image.album (name) with album's _id before POSTing
+        }
+        else {
+          // TODO: create the (new) album in the database (POST /api/albums) and get the returned _id
+          // TODO: replace image.album (name) with album's _id before POSTing
+        }
+        images.add(image)
+          .then(savedImage => {
+            this.loading = false;
+            this.images.push(savedImage);
+          });
       });
   };
 

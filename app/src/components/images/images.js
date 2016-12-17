@@ -1,5 +1,5 @@
 import template from './images.html';
-import styles from './images.css';
+import styles from './images.scss';
 
 export default {
   template,

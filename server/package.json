@@ -8,6 +8,11 @@
     "test": "MONGODB_URI=mongodb://localhost/images-test mocha",
     "test:watch": "MONGODB_URI=mongodb://localhost/images-test nodemon --exec mocha"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "author": "Mark Greenwood (mrkjgreenwood@gmail.com)",
   "license": "ISC",
   "dependencies": {

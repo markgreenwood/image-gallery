@@ -1,18 +1,18 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const path = require('path');
+const cssExtract = new ExtractTextPlugin('main.css');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/main.js',
   output: {
-    path: './build',
-    filename: 'app.js'
+    path: '../server/public',
+    filename: 'main.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new ExtractTextPlugin('main.css')
+    cssExtract
   ],
   devtool: 'source-map',
   module: {
@@ -29,11 +29,17 @@ module.exports = {
         presets: ['es2015']
       }
     }, {
-      test: /\.css/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      test: /\.scss/,
+      loader: cssExtract.extract(
+        'style-loader',
+        'css-loader?sourceMap!sass-loader?sourceMap'
+      )
     }, {
       test: /\.html$/,
       loader: 'html-loader'
     }]
+  },
+  sassLoader: {
+    includePaths: ['./src/scss/partials']
   }
 };

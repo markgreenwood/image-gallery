@@ -15,7 +15,9 @@
         "beforeEach": false,
         "afterEach": false,
         "before": false,
-        "after": false
+        "after": false,
+        "angular": false,
+        "chai": false
     },
     "rules": {
         "indent": [

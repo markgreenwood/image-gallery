@@ -5,6 +5,7 @@ https://bavotasan.com/2011/style-select-box-using-only-css/
 :local(.del-btn) {
   background-color: darkred;
   color: white;
+  font-size: 12pt;
 }
 
 :local(.selector) {
@@ -16,6 +17,7 @@ https://bavotasan.com/2011/style-select-box-using-only-css/
 }
 
 :local(.selector) select {
+  -webkit-appearance: none;
   background: transparent;
   width: 240px;
   padding: 5px; /* If you add too much padding here, the options won't show in IE */

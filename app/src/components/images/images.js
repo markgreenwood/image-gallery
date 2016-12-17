@@ -64,6 +64,7 @@ function controller(images, albums) {
         .add({ name: image.album, description: 'Default description - edit later' })
         .then((addedAlbum) => {
           this.myAlbums.push(addedAlbum);
+          image.album = addedAlbum._id;
           images.add(image)
             .then(savedImage => {
               this.loading = false;

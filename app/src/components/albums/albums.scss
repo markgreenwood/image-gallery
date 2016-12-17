@@ -1,5 +1,14 @@
-// .albumtile {
-//   height: 200px;
-//   width: 200px;
-//   display: inline-block;
-// }
+.albumtile {
+  width: 150px;
+  background-color: lightgreen;
+  display: inline-block;
+  border: 1px black solid;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 7px;
+
+  .tileActive {
+    background-color: darkgreen;
+    color: white;
+  }
+}

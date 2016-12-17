@@ -1,5 +1,5 @@
 <section>
-  <h3>Album ID {{ imagesCtrl.albumId }}</h3>
+  <!--<h3>Album ID {{ imagesCtrl.albumId }}</h3>-->
   <div id="view-selector">
     <label>Select a view:</label>
     <select ng-class="imagesCtrl.styles['selector']" ng-model="imagesCtrl.viewType" ng-options="view for view in imagesCtrl.viewTypes" ng-change="imagesCtrl.updateView()"></select>

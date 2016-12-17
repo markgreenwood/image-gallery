@@ -15,20 +15,13 @@ controller.$inject = ['imageService', 'albumService'];
 
 function controller(images, albums) {
 
-  // console.log('imagesCtrl.albumId = ', this.albumId);
   this.styles = styles;
   this.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
   this.viewType = 'Thumbnail';
 
   this.loading = true;
 
-  // images.get().then(images => {
-  //   this.loading = false;
-  //   this.images = images;
-  // });
-
   if (this.albumId) {
-    // images.get().then(images => {
     images.getAlbumImages(this.albumId).then(images => {
       this.loading = false;
       this.images = images;

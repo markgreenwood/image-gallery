@@ -1,22 +1,17 @@
 <h2>Albums</h2>
 
 <div id="view-selector">
-  <label>Select an album:</label>
-  <!--<select 
-    ng-class="albumsCtrl.styles['selector']" 
-    ng-model="albumsCtrl.currentAlbum" 
-    ng-options="album.name for album in albumsCtrl.myAlbums" 
-    ng-change="albumsCtrl.updateView()">
-  </select>-->
-  <!--<ul>
-    <li ng-click="albumsCtrl.setCurrent(album.name)" ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" ng-repeat="album in albumsCtrl.myAlbums">{{album.name}} [{{album._id}}]</li>
-  </ul>-->
-  <div class="albumtile" ng-click="albumsCtrl.setCurrent(album.name)" ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" ng-repeat="album in albumsCtrl.myAlbums">{{ album.name }}</div>
+  <label>Select an album:</label><br />
+  <a class="albumtile" 
+    ng-click="albumsCtrl.setCurrent(album.name)" 
+    ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" 
+    ui-sref-active="tileActive"
+    ng-repeat="album in albumsCtrl.myAlbums">
+    {{ album.name }}
+  </a>
 </div>
 
 <h2>Current Album: {{ albumsCtrl.currentAlbum }}</h2>
-
-<h2>Images</h2>
 
 <ui-view>Choose an album to display images</ui-view>
  

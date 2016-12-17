@@ -12,7 +12,6 @@ export default function albumService($http ,apiUrl) {
     remove(id) {
       return $http.delete(`${apiUrl}/albums/${id}`)
         .then(res => res.data);
-
     },
     add(album) {
       return $http.post(`${apiUrl}/albums`, album)

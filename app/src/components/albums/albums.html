@@ -8,9 +8,10 @@
     ng-options="album.name for album in albumsCtrl.myAlbums" 
     ng-change="albumsCtrl.updateView()">
   </select>-->
-  <ul>
+  <!--<ul>
     <li ng-click="albumsCtrl.setCurrent(album.name)" ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" ng-repeat="album in albumsCtrl.myAlbums">{{album.name}} [{{album._id}}]</li>
-  </ul>
+  </ul>-->
+  <div class="albumtile" ng-click="albumsCtrl.setCurrent(album.name)" ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" ng-repeat="album in albumsCtrl.myAlbums">{{ album.name }}</div>
 </div>
 
 <h2>Current Album: {{ albumsCtrl.currentAlbum }}</h2>

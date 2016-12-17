@@ -34,6 +34,22 @@ describe ('images component', () => {
       description: 'Alan Bean leaves the lunar module and walks on the Moon'
     };
 
+    const albums = [
+      {
+        name: 'Album 1',
+        description: 'It\'s an album',
+      },
+      {
+        name: 'Album 2',
+        description: 'It\'s another album'
+      }
+    ];
+
+    const album = {
+      name: 'Album 3',
+      description: 'The Third Album'
+    };
+
     // mock the service for testing
     const imageService = {
       get() {
@@ -50,9 +66,24 @@ describe ('images component', () => {
       }
     };
 
+    const albumService = {
+      get() {
+        return Promise.resolve(albums);
+      },
+      getImages() {
+        return Promise.resolve(images);
+      },
+      remove(id) {
+        return Promise.resolve(album);
+      },
+      add(album) {
+        return Promise.resolve(album);
+      }
+    };
+
     // test that the component loads the images
     it ('loads images', done => {
-      const component = $component('images', { imageService });
+      const component = $component('images', { imageService, albumService });
       expect(component.loading).to.be.ok;
       setTimeout(() => {
         expect(component.images).to.deep.equal(images);
@@ -62,7 +93,7 @@ describe ('images component', () => {
     });
 
     it ('adds an image', done => {
-      const component = $component('images', { imageService });
+      const component = $component('images', { imageService, albumService });
       component.add(image);
       expect(component.loading).to.be.ok;
 
@@ -75,7 +106,7 @@ describe ('images component', () => {
     });
 
     it ('removes an image', done => {
-      const component = $component('images', { imageService });
+      const component = $component('images', { imageService, albumService });
       image._id = 1;
       component.remove(image);
       expect(component.loading).to.be.ok;

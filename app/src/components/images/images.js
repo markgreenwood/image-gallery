@@ -43,25 +43,34 @@ function controller(images, albums) {
 
   this.add = image => {
     this.loading = true;
-    albums.get()
-      .then((/*rtndAlbums*/) => {
-        // const albumLookup = {};
-        // rtndAlbums.forEach((a) => {
-        //   albumLookup[a.name] = a._id;
-        // });
-        if (image.album /* is in database already */) {
-          // TODO: replace image.album (name) with album's _id before POSTing
-        }
-        else {
-          // TODO: create the (new) album in the database (POST /api/albums) and get the returned _id
-          // TODO: replace image.album (name) with album's _id before POSTing
-        }
-        images.add(image)
-          .then(savedImage => {
-            this.loading = false;
-            this.images.push(savedImage);
-          });
-      });
+
+    let albumLookup = {};
+    this.myAlbums.forEach((a) => {
+      albumLookup[a.name] = a._id;
+    });
+
+    if (albumLookup[image.album]) {
+      // TODO: replace image.album (name) with album's _id before POSTing
+      image.album = albumLookup[image.album];
+      images
+        .add(image)
+        .then(savedImage => {
+          this.loading = false;
+          this.images.push(savedImage);
+        });
+    }
+    else {
+      albums
+        .add({ name: image.album, description: 'Default description - edit later' })
+        .then((addedAlbum) => {
+          this.myAlbums.push(addedAlbum);
+          images.add(image)
+            .then(savedImage => {
+              this.loading = false;
+              this.images.push(savedImage);
+            });
+        });
+    }
   };
 
   this.remove = image => {

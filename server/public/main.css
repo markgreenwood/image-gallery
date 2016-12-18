@@ -26,6 +26,17 @@ img {
   max-width: 200px;
   float: left;
   padding: 5px; }
+.albumtile {
+  width: 150px;
+  background-color: lightgreen;
+  display: inline-block;
+  border: 1px black solid;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 7px; }
+  .albumtile .tileActive {
+    background-color: darkgreen;
+    color: white; }
 a {
   border: 2px outset lightgrey;
   text-decoration: none;

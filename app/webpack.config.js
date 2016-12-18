@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const cssExtract = new ExtractTextPlugin('main.css');
 
 module.exports = {
+  target: 'web',
   entry: './src/main.js',
   output: {
     path: '../server/public',

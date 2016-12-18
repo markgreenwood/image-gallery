@@ -15,30 +15,36 @@ controller.$inject = ['imageService', 'albumService'];
 
 function controller(images, albums) {
 
-  this.styles = styles;
-  this.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
-  this.viewType = 'Thumbnail';
+  const self = this;
+  self.styles = styles;
+  self.viewTypes = [ 'Details', 'Thumbnail', 'Full' ];
+  self.viewType = 'Thumbnail';
 
-  this.loading = true;
+  self.loading = true;
 
-  if (this.albumId) {
-    images.getAlbumImages(this.albumId).then(images => {
-      this.loading = false;
-      this.images = images;
-    });
-  }
-  else {
-    images.get().then(images => {
-      this.loading = false;
-      this.images = images;
-    });
-  }
+  images.get().then(rtndImages => {
+    self.loading = false;
+    self.imageList = rtndImages;
+  });
 
-  this.add = image => {
-    this.loading = true;
+  // if (this.albumId) {
+  //   images.get(this.albumId).then(images => {
+  //     this.loading = false;
+  //     this.images = images;
+  //   });
+  // }
+  // else {
+  //   images.get().then(images => {
+  //     this.loading = false;
+  //     this.images = images;
+  //   });
+  // }
+
+  self.add = image => {
+    self.loading = true;
 
     let albumLookup = {};
-    this.myAlbums.forEach((a) => {
+    self.myAlbums.forEach((a) => {
       albumLookup[a.name] = a._id;
     });
 
@@ -48,40 +54,40 @@ function controller(images, albums) {
       images
         .add(image)
         .then(savedImage => {
-          this.loading = false;
-          this.images.push(savedImage);
+          self.loading = false;
+          self.imageList.push(savedImage);
         });
     }
     else {
       albums
         .add({ name: image.album, description: 'Default description - edit later' })
         .then((addedAlbum) => {
-          this.myAlbums.push(addedAlbum);
+          self.myAlbums.push(addedAlbum);
           image.album = addedAlbum._id;
           images.add(image)
             .then(savedImage => {
-              this.loading = false;
-              this.images.push(savedImage);
+              self.loading = false;
+              self.imageList.push(savedImage);
             });
         });
     }
   };
 
-  this.remove = image => {
-    this.loading = true;
+  self.remove = image => {
+    self.loading = true;
     images.remove(image._id)
       .then(() => {
-        this.loading = false;
-        const index = this.images.indexOf(image);
-        if (index > -1) this.images.splice(index, 1);
+        self.loading = false;
+        const index = self.imageList.indexOf(image);
+        if (index > -1) self.imageList.splice(index, 1);
       });
   };
 
-  this.updateView = function() {
-    this.showDetail = (this.viewType === 'Details');
-    this.showThumbnail = (this.viewType === 'Thumbnail');
-    this.showFull = (this.viewType === 'Full');
+  self.updateView = function() {
+    self.showDetail = (self.viewType === 'Details');
+    self.showThumbnail = (self.viewType === 'Thumbnail');
+    self.showFull = (self.viewType === 'Full');
   };
 
-  this.updateView();
+  self.updateView();
 }

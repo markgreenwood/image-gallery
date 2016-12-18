@@ -8,7 +8,7 @@ describe ('images component', () => {
 
   let $component = null;
 
-  beforeEach(angular.mock.inject($componentController => {
+  beforeEach(angular.mock.inject(($componentController) => {
     $component = $componentController;
   }));
 
@@ -19,43 +19,45 @@ describe ('images component', () => {
       {
         title: 'Cute Bunny',
         link: 'http://f.cl.ly/items/3g3J1G0w122M360w380O/3726490195_f7cc75d377_o.jpg',
-        description: 'Really, really cute bunny'
+        description: 'Really, really cute bunny',
+        album: 'Bunnies'
       },
       {
         title: 'David Zabriskie time trial',
         link: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Dave_Zabriskie_-_USA_Pro_Time_Trial.jpg/1280px-Dave_Zabriskie_-_USA_Pro_Time_Trial.jpg?1481125420015',
-        description: 'David is a really fast time-trialist who\'s been clocked at 34 mph'
+        description: 'David is a really fast time-trialist who\'s been clocked at 34 mph',
+        album: 'Cycling'
       }
     ];
 
     const image = {
       title: 'Bean walking on the Moon',
       link: 'http://www.armaghplanet.com/blog/wp-content/uploads/2011/09/Image-of-as12-46-6728.jpg',
-      description: 'Alan Bean leaves the lunar module and walks on the Moon'
+      description: 'Alan Bean leaves the lunar module and walks on the Moon',
+      album: 'Space'
     };
 
     const albums = [
       {
-        name: 'Album 1',
-        description: 'It\'s an album',
+        _id: 1,
+        name: 'Bunnies',
+        description: 'Rabbits'
       },
       {
-        name: 'Album 2',
-        description: 'It\'s another album'
+        _id: 2,
+        name: 'Cycling',
+        description: 'Bike racing'
       }
     ];
 
     const album = {
-      name: 'Album 3',
-      description: 'The Third Album'
+      name: 'Space',
+      description: 'Exploring outer space'
     };
 
     // mock the service for testing
     const imageService = {
-      get() {
-        return Promise.resolve(images);
-      },
-      getAlbumImages(albumId) { // eslint-disable-line no-unused-vars
+      get(albumId) { // eslint-disable-line no-unused-vars
         return Promise.resolve(images);
       },
       add() {
@@ -73,7 +75,7 @@ describe ('images component', () => {
       getImages() {
         return Promise.resolve(images);
       },
-      remove(id) {
+      remove(id) { // eslint-disable-line no-unused-vars
         return Promise.resolve(album);
       },
       add(album) {
@@ -83,7 +85,7 @@ describe ('images component', () => {
 
     // test that the component loads the images
     it ('loads images', done => {
-      const component = $component('images', { imageService, albumService });
+      const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
       expect(component.loading).to.be.ok;
       setTimeout(() => {
         expect(component.images).to.deep.equal(images);
@@ -93,11 +95,14 @@ describe ('images component', () => {
     });
 
     it ('adds an image', done => {
-      const component = $component('images', { imageService, albumService });
+      const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
+      console.log('component.images.length before add ', component.images.length);
       component.add(image);
+      console.log('component.images.length after add ', component.images.length);
       expect(component.loading).to.be.ok;
 
       setTimeout(() => {
+        console.log('component.images ', component.images);
         expect(component.images.length).to.equal(3);
         expect(component.images[2]).to.deep.equal(image);
         expect(component.loading).to.not.be.ok;

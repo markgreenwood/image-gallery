@@ -85,7 +85,7 @@ describe('image service', () => {
       .respond(album1Images);
 
     imageService
-      .getAlbumImages(1)
+      .get(1)
       .then((returnedImages) => {
         expect(returnedImages).to.deep.equal(album1Images);
         done();

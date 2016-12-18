@@ -13,15 +13,15 @@ module.exports = function(config) {
     webpack: webpackConfig,
     preprocessors: {
       './src/main.js': [ 'webpack' ],
-      './test/**/*.js': [ 'babel' ]
+      './test/**/*.js': [ 'webpack' ]
     },
-    browsers: [ 'Chrome', 'Firefox' ],// 'Safari' ],
+    browsers: [ 'Chrome' ],// 'Firefox' ],// 'Safari' ],
     reporters: [ 'spec' ],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
-    singleRun: true,
+    autoWatch: true,
+    singleRun: false,
     concurrency: Infinity
   };
 

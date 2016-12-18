@@ -88,7 +88,7 @@ describe ('images component', () => {
       const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
       expect(component.loading).to.be.ok;
       setTimeout(() => {
-        expect(component.images).to.deep.equal(images);
+        expect(component.imageList).to.deep.equal(images);
         expect(component.loading).to.not.be.ok;
         done();
       });
@@ -96,15 +96,12 @@ describe ('images component', () => {
 
     it ('adds an image', done => {
       const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
-      console.log('component.images.length before add ', component.images.length);
       component.add(image);
-      console.log('component.images.length after add ', component.images.length);
       expect(component.loading).to.be.ok;
 
       setTimeout(() => {
-        console.log('component.images ', component.images);
-        expect(component.images.length).to.equal(3);
-        expect(component.images[2]).to.deep.equal(image);
+        expect(component.imageList.length).to.equal(3);
+        expect(component.imageList[2]).to.deep.equal(image);
         expect(component.loading).to.not.be.ok;
         done();
       });
@@ -117,8 +114,8 @@ describe ('images component', () => {
       expect(component.loading).to.be.ok;
 
       setTimeout(() => {
-        expect(images.length).to.equal(2);
-        expect(component.images).to.deep.equal(images);
+        expect(component.imageList.length).to.equal(2);
+        expect(component.imageList).to.deep.equal(images);
         expect(component.loading).to.not.be.ok;
         done();
       });

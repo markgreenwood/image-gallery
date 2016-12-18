@@ -21,24 +21,12 @@ function controller(images, albums) {
   self.viewType = 'Thumbnail';
 
   self.loading = true;
+  self.imageList = [];
 
-  images.get().then(rtndImages => {
+  images.get(self.albumId).then(rtndImages => {
     self.loading = false;
     self.imageList = rtndImages;
   });
-
-  // if (this.albumId) {
-  //   images.get(this.albumId).then(images => {
-  //     this.loading = false;
-  //     this.images = images;
-  //   });
-  // }
-  // else {
-  //   images.get().then(images => {
-  //     this.loading = false;
-  //     this.images = images;
-  //   });
-  // }
 
   self.add = image => {
     self.loading = true;

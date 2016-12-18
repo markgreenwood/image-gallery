@@ -5,7 +5,7 @@ export default {
   template,
   bindings: {
     albumId: '<',
-    myAlbums: '='
+    albumList: '='
   },
   controller,
   controllerAs: 'imagesCtrl'
@@ -32,7 +32,7 @@ function controller(images, albums) {
     self.loading = true;
 
     let albumLookup = {};
-    self.myAlbums.forEach((a) => {
+    self.albumList.forEach((a) => {
       albumLookup[a.name] = a._id;
     });
 
@@ -50,7 +50,7 @@ function controller(images, albums) {
       albums
         .add({ name: image.album, description: 'Default description - edit later' })
         .then((addedAlbum) => {
-          self.myAlbums.push(addedAlbum);
+          self.albumList.push(addedAlbum);
           image.album = addedAlbum._id;
           images.add(image)
             .then(savedImage => {

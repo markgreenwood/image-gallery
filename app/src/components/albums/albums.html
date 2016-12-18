@@ -4,9 +4,9 @@
   <label>Select an album:</label><br />
   <a class="albumtile" 
     ng-click="albumsCtrl.setCurrent(album.name)" 
-    ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.myAlbums })" 
+    ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.albumList })" 
     ui-sref-active="tileActive"
-    ng-repeat="album in albumsCtrl.myAlbums">
+    ng-repeat="album in albumsCtrl.albumList">
     {{ album.name }}
   </a>
 </div>

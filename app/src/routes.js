@@ -23,7 +23,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
         console.log('Passed in album_id ', t.params().album_id);
         return t.params().album_id; 
       } ],
-      myAlbums: [ '$transition$', t => {
+      albumList: [ '$transition$', t => {
         console.log('t.params ', t.params());
         return t.params().albums;
       }]

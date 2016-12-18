@@ -13,7 +13,7 @@ function controller(albums) {
   this.styles = styles;
 
   albums.get().then(returnedAlbums => {
-    this.myAlbums = returnedAlbums;
+    this.albumList = returnedAlbums;
   });
 
   this.setCurrent = (albumName) => {

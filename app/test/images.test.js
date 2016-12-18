@@ -85,7 +85,7 @@ describe ('images component', () => {
 
     // test that the component loads the images
     it ('loads images', done => {
-      const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
+      const component = $component('images', { imageService, albumService }, { albumId: 1, albumList: albums });
       expect(component.loading).to.be.ok;
       setTimeout(() => {
         expect(component.imageList).to.deep.equal(images);
@@ -95,7 +95,7 @@ describe ('images component', () => {
     });
 
     it ('adds an image', done => {
-      const component = $component('images', { imageService, albumService }, { albumId: 1, myAlbums: albums });
+      const component = $component('images', { imageService, albumService }, { albumId: 1, albumList: albums });
       component.add(image);
       expect(component.loading).to.be.ok;
 

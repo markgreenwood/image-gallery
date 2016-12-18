@@ -1,7 +1,6 @@
 <h2>Albums</h2>
 
 <div id="view-selector">
-  <label>Select an album:</label><br />
   <a class="albumtile" 
     ng-click="albumsCtrl.setCurrent(album.name)" 
     ui-sref="albums.images({ album_id: album._id, albums: albumsCtrl.albumList })" 

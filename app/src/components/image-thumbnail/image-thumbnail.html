@@ -1,3 +1,4 @@
 <div>
   <img ng-src="{{$ctrl.image.link}}" width="100px">
+  <button ng-class="$parent.imagesCtrl.styles['del-btn']" ng-click="$parent.imagesCtrl.remove($ctrl.image)">Delete</button>
 </div>

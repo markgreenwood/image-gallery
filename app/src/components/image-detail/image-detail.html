@@ -4,4 +4,5 @@
   <tr><td><b>Link:</b></td><td>{{ $ctrl.image.link }}<td></tr>
   <tr><td><b>Description:</b></td><td>{{ $ctrl.image.description }}</td></tr>
   </table>
+  <button ng-class="$parent.imagesCtrl.styles['del-btn']" ng-click="$parent.imagesCtrl.remove($ctrl.image)">Delete</button>  
 </div>

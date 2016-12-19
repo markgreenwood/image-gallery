@@ -1,8 +1,13 @@
 <section>
   <!--<h3>Album ID {{ imagesCtrl.albumId }}</h3>-->
-  <div id="view-selector">
+  <!--<div id="view-selector">
     <label>Select a view:</label>
     <select ng-class="imagesCtrl.styles['selector']" ng-model="imagesCtrl.viewType" ng-options="view for view in imagesCtrl.viewTypes" ng-change="imagesCtrl.updateView()"></select>
+  </div>-->
+  <div>
+    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Details" /> Details
+    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Full" /> Full
+    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Thumbnail" /> Thumbnail
   </div>
   <div ng-class="imagesCtrl.styles['loader']" ng-if="imagesCtrl.loading">Loading...</div>
   <div ng-repeat="image in imagesCtrl.imageList" ng-hide="imagesCtrl.loading" ng-class="{'thumbnail-view': imagesCtrl.showThumbnail, 'detail-view': imagesCtrl.showDetail, 'full-view': imagesCtrl.showFull}">

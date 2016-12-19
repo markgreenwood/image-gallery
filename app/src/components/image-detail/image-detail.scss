@@ -8,4 +8,12 @@
   border-radius: 5px;
   background: $bg-color-detail;
   vertical-align: top;
+
+  table, button {
+    display: block;
+  }
+
+  td {
+    border: 1px solid black;
+  }
 }

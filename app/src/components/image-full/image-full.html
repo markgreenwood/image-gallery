@@ -2,5 +2,5 @@
   <p><b>Title:</b> {{ image.title }}</p>
   <img ng-src="{{image.link}}">
   <p><b>Description:</b> {{ image.description }}</p>
-  <!--<button ng-class="$parent.imagesCtrl.styles['del-btn']" ng-click="$scope.$ctrl.remove(image)">Delete</button>-->
+  <button ng-class="$ctrl.imagesCtrl.styles['del-btn']" ng-click="$ctrl.imageCtrl.remove(image)">Delete</button>
 </div>

@@ -43,34 +43,6 @@ export default function routes($stateProvider, $urlRouterProvider) {
       url: '/full',
       component: 'imageFull'
     });    
-  // $stateProvider.state({
-  //   name: 'images',
-  //   url: '/:album_id',
-  //   params: { albums: null },
-  //   resolve: {
-  //     albumId: [ '$transition$', t =>  { 
-  //       console.log('Passed in album_id ', t.params().album_id);
-  //       return t.params().album_id; 
-  //     } ]
-  //     // albumList: [ '$transition$', t => {
-  //     //   console.log('t.params ', t.params());
-  //     //   return t.params().albums;
-  //     // }]
-  //   },
-  //   component: 'images'
-  // });
-
-  // $stateProvider.state({
-  //   name: 'images.details',
-  //   url: '/images',
-  //   component: 'images'
-  // });
-  
-  // $stateProvider.state({
-  //   name: 'images',
-  //   url: '/images',
-  //   component: 'images'
-  // });
 
   $stateProvider.state({
     name: 'about',

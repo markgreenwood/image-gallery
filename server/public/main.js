@@ -33102,10 +33102,8 @@
 	  controllerAs: 'albumCtrl'
 	};
 	
-	// controller.$inject = [ 'albumService' ];
 	
 	function controller() {
-	  // eslint-disable-line no-unused-vars
 	  this.styles = _album4.default;
 	}
 
@@ -33113,7 +33111,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<section ng-class=\"albumCtrl.styles.album\">\n\n  <h2>{{albumCtrl.album.name}}</h2>\n  \n  <!--<h3>Images</h3>-->\n  <images images=\"albumCtrl.album.images\">\n  </images>\n\n</section>";
+	module.exports = "<section ng-class=\"albumCtrl.styles.album\">\n\n  <h2>{{albumCtrl.album.name}}</h2>\n  \n  <images images=\"albumCtrl.album.images\">\n  </images>\n\n</section>";
 
 /***/ },
 /* 20 */
@@ -33154,16 +33152,10 @@
 	  var _this = this;
 	
 	  this.styles = _albums4.default;
-	  // this.albumList = [];
 	
 	  albums.get().then(function (returnedAlbums) {
 	    _this.albumList = returnedAlbums;
 	  });
-	
-	  // keeps track of currently active album - not sure if we'll need this?
-	  this.setCurrent = function (albumName) {
-	    _this.currentAlbum = albumName;
-	  };
 	
 	  this.add = function (album) {
 	    albums.add(album);
@@ -33174,7 +33166,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul>\n    <a ng-repeat=\"album in $ctrl.albumList\"\n      ui-sref=\"album.thumbnails({ id: album._id })\"        \n      ui-sref-active=\"tileActive\"\n      class=\"albumtile\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<new-album add=\"$ctrl.add\"></new-album>\n\n<h2>{{ $ctrl.currentAlbum }}</h2>\n\n<ui-view>Choose an album to display images</ui-view>\n";
+	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul>\n    <a ng-repeat=\"album in $ctrl.albumList\"\n      ui-sref=\"album.thumbnails({ id: album._id })\"        \n      ui-sref-active=\"tileActive\"\n      class=\"albumtile\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<new-album add=\"$ctrl.add\"></new-album>\n\n<ui-view>Choose an album to display images</ui-view>\n";
 
 /***/ },
 /* 24 */
@@ -33278,7 +33270,7 @@
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "  <header>\n    <h1>Mark's Image Gallery</h1>\n    <nav>\n      <a ui-sref=\"welcome\" ui-sref-active=\"hilite\">Welcome</a>\n      <a ui-sref=\"albums\" ui-sref-active=\"hilite\">Albums</a>\n      <!--<a ui-sref=\"images\" ui-sref-active=\"hilite\">Images</a>-->\n      <a ui-sref=\"about\" ui-sref-active=\"hilite\">About</a>\n    </nav>\n  </header>\n\n  <main>\n    <ui-view></ui-view>\n  </main>\n\n  <footer>\n    &copy;2016 by Mark Greenwood \n  </footer>";
+	module.exports = "  <header>\n    <h1>Mark's Image Gallery</h1>\n    <nav>\n      <a ui-sref=\"welcome\" ui-sref-active=\"hilite\">Welcome</a>\n      <a ui-sref=\"albums\" ui-sref-active=\"hilite\">Albums</a>\n      <a ui-sref=\"about\" ui-sref-active=\"hilite\">About</a>\n    </nav>\n  </header>\n\n  <main>\n    <ui-view></ui-view>\n  </main>\n\n  <footer>\n    &copy;2016 by Mark Greenwood \n  </footer>";
 
 /***/ },
 /* 32 */
@@ -33327,7 +33319,7 @@
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"detail-view\">\n  <table>\n  <tr><td><b>Title:</b></td><td>{{ image.title }}</td></tr>\n  <tr><td><b>Link:</b></td><td>{{ image.link }}</td></tr>\n  <tr><td><b>Description:</b></td><td>{{ image.description }}</td></tr>\n  </table>\n  <!--<button ng-click=\"$scope.$ctrl.remove(image)\">Delete</button>  -->\n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"detail-view\">\n  <table>\n  <tr><td><b>Title:</b></td><td>{{ image.title }}</td></tr>\n  <tr><td><b>Link:</b></td><td>{{ image.link }}</td></tr>\n  <tr><td><b>Description:</b></td><td>{{ image.description }}</td></tr>\n  </table>\n  <button ng-class=\"$ctrl.imagesCtrl.styles['del-btn']\" ng-click=\"$ctrl.imagesCtrl.remove(image)\">Delete</button>  \n</div>";
 
 /***/ },
 /* 36 */
@@ -33376,7 +33368,7 @@
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"full-view\">\n  <p><b>Title:</b> {{ image.title }}</p>\n  <img ng-src=\"{{image.link}}\">\n  <p><b>Description:</b> {{ image.description }}</p>\n  <!--<button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$scope.$ctrl.remove(image)\">Delete</button>-->\n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"full-view\">\n  <p><b>Title:</b> {{ image.title }}</p>\n  <img ng-src=\"{{image.link}}\">\n  <p><b>Description:</b> {{ image.description }}</p>\n  <button ng-class=\"$ctrl.imagesCtrl.styles['del-btn']\" ng-click=\"$ctrl.imageCtrl.remove(image)\">Delete</button>\n</div>";
 
 /***/ },
 /* 40 */
@@ -33419,15 +33411,6 @@
 	
 	function controller() {
 	  this.styles = _imageThumbnail4.default;
-	
-	  // this.remove = (id) => {
-	  //   images.remove(id)
-	  //     .then(() => {
-	  //       self.loading = false;
-	  //       const index = self.images.indexOf(image);
-	  //       if (index > -1) self.images.splice(index, 1);
-	  //     });
-	  // };
 	}
 
 /***/ },
@@ -33484,12 +33467,6 @@
 	  self.viewType = 'Thumbnail';
 	
 	  self.loading = true;
-	  // self.imageList = [];
-	
-	  // images.get(self.albumId).then(rtndImages => {
-	  //   self.loading = false;
-	  //   self.imageList = rtndImages;
-	  // });
 	
 	  albums.get().then(function (rtndAlbums) {
 	    self.loading = false;
@@ -33505,7 +33482,6 @@
 	    });
 	
 	    if (albumLookup[image.album]) {
-	      // TODO: replace image.album (name) with album's _id before POSTing
 	      image.album = albumLookup[image.album];
 	      images.add(image).then(function (savedImage) {
 	        self.loading = false;
@@ -33545,7 +33521,7 @@
 /* 47 */
 /***/ function(module, exports) {
 
-	module.exports = "<section>\n  <div>\n    <button ui-sref=\"album.details\">Details</button>\n    <button ui-sref=\"album.full\">Full</button>\n    <button ui-sref=\"album.thumbnails\">Thumbnails</button>\n    <!--<input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Details\" /> Details\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Full\" /> Full\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Thumbnail\" /> Thumbnail-->\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
+	module.exports = "<section>\n  <div>\n    <button ui-sref=\"album.details\">Details</button>\n    <button ui-sref=\"album.full\">Full</button>\n    <button ui-sref=\"album.thumbnails\">Thumbnails</button>\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
 
 /***/ },
 /* 48 */
@@ -33631,9 +33607,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// import template from './welcome.html';
-	// import styles from './welcome.scss';
-	
 	exports.default = {
 	  template: '<h2>Welcome to the Image Gallery...</h2>' + '<p>...a facility for storing references to your favorite images. The image gallery uses AngularJS for the frontend and Node.js, Express, and Mongo DB for the backend.'
 	};
@@ -42170,34 +42143,6 @@
 	    url: '/full',
 	    component: 'imageFull'
 	  });
-	  // $stateProvider.state({
-	  //   name: 'images',
-	  //   url: '/:album_id',
-	  //   params: { albums: null },
-	  //   resolve: {
-	  //     albumId: [ '$transition$', t =>  { 
-	  //       console.log('Passed in album_id ', t.params().album_id);
-	  //       return t.params().album_id; 
-	  //     } ]
-	  //     // albumList: [ '$transition$', t => {
-	  //     //   console.log('t.params ', t.params());
-	  //     //   return t.params().albums;
-	  //     // }]
-	  //   },
-	  //   component: 'images'
-	  // });
-	
-	  // $stateProvider.state({
-	  //   name: 'images.details',
-	  //   url: '/images',
-	  //   component: 'images'
-	  // });
-	
-	  // $stateProvider.state({
-	  //   name: 'images',
-	  //   url: '/images',
-	  //   component: 'images'
-	  // });
 	
 	  $stateProvider.state({
 	    name: 'about',

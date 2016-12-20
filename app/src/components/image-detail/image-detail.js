@@ -12,7 +12,6 @@ export default {
   controller
 };
 
-
 function controller() {
   this.styles = styles;
 }

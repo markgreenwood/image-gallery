@@ -99,6 +99,8 @@ nav a.hilite, a:hover {
   max-width: 800px; }
   .full-view img {
     max-width: 98%; }
+  .full-view img, .full-view button {
+    display: block; }
 .thumbnail-view {
   border: 1px solid;
   padding: 5px;
@@ -107,6 +109,8 @@ nav a.hilite, a:hover {
   background: beige;
   vertical-align: top;
   display: table-cell; }
+  .thumbnail-view img, .thumbnail-view button {
+    display: block; }
 /* Styling ideas from 
 https://bavotasan.com/2011/style-select-box-using-only-css/
 */

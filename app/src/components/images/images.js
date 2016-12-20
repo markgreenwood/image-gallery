@@ -21,12 +21,6 @@ function controller(images, albums) {
   self.viewType = 'Thumbnail';
 
   self.loading = true;
-  // self.imageList = [];
-
-  // images.get(self.albumId).then(rtndImages => {
-  //   self.loading = false;
-  //   self.imageList = rtndImages;
-  // });
 
   albums.get().then(rtndAlbums => {
     self.loading = false;
@@ -42,7 +36,6 @@ function controller(images, albums) {
     });
 
     if (albumLookup[image.album]) {
-      // TODO: replace image.album (name) with album's _id before POSTing
       image.album = albumLookup[image.album];
       images
         .add(image)

@@ -21,11 +21,15 @@ albums
   })
   
   .get('/:id', (req, res, next) => {
-    Album.findById(req.params.id)
-      .select('name description')
-      .lean()
-      .then(album => res.send(album))
-      .catch(next);
+    Promise.all([
+      Album.findById(req.params.id).select('name description').lean(),
+      Image.find({ album: req.params.id }).lean()
+    ])
+    .then(([ album, images ]) => {
+      album.images = images;
+      res.send(album);
+    })
+    .catch(next);
   })
 
   .post('/', bodyParser, (req, res, next) => {

@@ -57,7 +57,9 @@ describe('album', () => {
       .get(`/api/albums/${testAlbum._id}`)
       .then(res => {
         const returnedAlbum = res.body;
-        expect(returnedAlbum).to.deep.equal(testAlbum);
+        expect(returnedAlbum.name).to.equal(testAlbum.name);
+        expect(returnedAlbum.description).to.equal(testAlbum.description);
+        expect(returnedAlbum.images).to.deep.equal([]);
         done();
       })
       .catch(done);

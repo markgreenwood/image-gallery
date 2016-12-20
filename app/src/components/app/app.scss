@@ -1,6 +1,26 @@
-@import 'linkstyles'
+@import 'linkstyles';
 
 // a.hilite {
 //   background: steelblue;
 //   color: white;
 // }
+
+header {
+  display: block;
+}
+
+footer {
+  display: block;
+}
+
+nav a {
+  border: 2px outset lightgrey;
+  text-decoration: none;
+  padding: 0.2em;
+  background-color: lightgray;
+}
+
+nav a.hilite, a:hover {
+  background: steelblue;
+  color: white;
+}

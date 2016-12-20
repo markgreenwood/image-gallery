@@ -1,19 +1,21 @@
 <section>
-  <!--<h3>Album ID {{ imagesCtrl.albumId }}</h3>-->
-  <!--<div id="view-selector">
-    <label>Select a view:</label>
-    <select ng-class="imagesCtrl.styles['selector']" ng-model="imagesCtrl.viewType" ng-options="view for view in imagesCtrl.viewTypes" ng-change="imagesCtrl.updateView()"></select>
-  </div>-->
   <div>
-    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Details" /> Details
+    <button>Details</button>
+    <button>Full</button>
+    <button>Thumbnails</button>
+    <!--<input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Details" /> Details
     <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Full" /> Full
-    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Thumbnail" /> Thumbnail
+    <input type="radio" ng-model="imagesCtrl.viewType" ng-click="imagesCtrl.updateView()" value="Thumbnail" /> Thumbnail-->
   </div>
+
+  <!--Loading indicator...-->
   <div ng-class="imagesCtrl.styles['loader']" ng-if="imagesCtrl.loading">Loading...</div>
-  <div ng-repeat="image in imagesCtrl.imageList" ng-hide="imagesCtrl.loading" ng-class="{'thumbnail-view': imagesCtrl.showThumbnail, 'detail-view': imagesCtrl.showDetail, 'full-view': imagesCtrl.showFull}">
-    <image-detail image="image" ng-show="imagesCtrl.showDetail"></image-detail>
-    <image-thumbnail image="image" ng-show="imagesCtrl.showThumbnail"></image-thumbnail>
-    <image-full image="image" ng-show="imagesCtrl.showFull" remove="imagesCtrl.remove"></image-full>
+
+  <!--List of images, could be one of three display modes-->
+  <div>
+    <ui-view></ui-view>
   </div>
+
+  <!--Form to add a new image-->
   <new-image add="imagesCtrl.add"></new-image>
 </section>

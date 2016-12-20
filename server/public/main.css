@@ -12,38 +12,34 @@ td {
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif; }
-a {
-  border: 2px outset lightgrey;
-  text-decoration: none;
-  padding: 0.2em;
-  background-color: lightgray; }
-
-a.hilite {
-  background: steelblue;
-  color: white; }
-
 img {
   max-width: 200px;
   float: left;
   padding: 5px; }
 .albumtile {
   width: 150px;
-  background-color: lightgreen;
+  background-color: tan;
   display: inline-block;
   border: 1px black solid;
   padding: 0.5em;
-  margin: 0.5em;
+  margin: 0.2em;
   border-radius: 7px; }
   .albumtile .tileActive {
     background-color: darkgreen;
     color: white; }
-a {
+header {
+  display: block; }
+
+footer {
+  display: block; }
+
+nav a {
   border: 2px outset lightgrey;
   text-decoration: none;
   padding: 0.2em;
   background-color: lightgray; }
 
-a.hilite {
+nav a.hilite, a:hover {
   background: steelblue;
   color: white; }
 .detail-view {
@@ -51,14 +47,18 @@ a.hilite {
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  background: lightgray;
+  background: beige;
   vertical-align: top; }
+  .detail-view table, .detail-view button {
+    display: block; }
+  .detail-view td {
+    border: 1px solid black; }
 .full-view {
   border: 1px solid;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  background: mintcream;
+  background: beige;
   vertical-align: top;
   max-width: 800px; }
 .thumbnail-view {

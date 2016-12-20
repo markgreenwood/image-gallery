@@ -4,8 +4,7 @@ import styles from './images.scss';
 export default {
   template,
   bindings: {
-    albumId: '<',
-    albumList: '='
+    albumId: '<'
   },
   controller,
   controllerAs: 'imagesCtrl'

@@ -14,5 +14,9 @@
   {
     "name": "Space",
     "description": "Exploring outer space from Sputnik to the ISS"
+  },
+  {
+    "name": "Cityscapes",
+    "description": "City skylines"
   }
 ]

@@ -4,7 +4,7 @@ import styles from './image-thumbnail.scss';
 export default {
   template,
   bindings: {
-    images: '<',
+    images: '<'
   },
   controller
 };

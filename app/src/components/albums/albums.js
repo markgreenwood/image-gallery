@@ -21,4 +21,8 @@ function controller(albums) {
     this.currentAlbum = albumName;
   };
 
+  this.add = (album) => {
+    albums.add(album);
+  };
+
 }

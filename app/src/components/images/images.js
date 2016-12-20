@@ -4,7 +4,8 @@ import styles from './images.scss';
 export default {
   template,
   bindings: {
-    albumId: '<'
+    albumId: '<',
+    images: '<'
   },
   controller,
   controllerAs: 'imagesCtrl'
@@ -20,11 +21,15 @@ function controller(images, albums) {
   self.viewType = 'Thumbnail';
 
   self.loading = true;
-  self.imageList = [];
+  // self.imageList = [];
 
   images.get(self.albumId).then(rtndImages => {
     self.loading = false;
     self.imageList = rtndImages;
+  });
+
+  albums.get().then(rtndAlbums => {
+    self.albumList = rtndAlbums;
   });
 
   self.add = image => {

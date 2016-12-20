@@ -7,9 +7,5 @@
   border-radius: 5px;
   background: $bg-color-thumbnail;
   vertical-align: top;
-  display: table-cell;
-
-  img, button {
-    display: block;
-  }
+  display: inline-block;
 }

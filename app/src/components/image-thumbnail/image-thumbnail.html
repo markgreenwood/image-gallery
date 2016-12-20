@@ -1,4 +1,6 @@
 <div ng-repeat="image in $ctrl.images" class="thumbnail-view">
-  <img ng-src="{{image.link}}" width="100px">
+  <div>
+    <img ng-src="{{image.link}}" height="100px">
+  </div>
   <button ng-class="$ctrl.imagesCtrl.styles['del-btn']" ng-click="$ctrl.imagesCtrl.remove(image)">Delete</button>
 </div>

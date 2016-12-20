@@ -12,7 +12,7 @@ export default function albumService($http ,apiUrl) {
       }
     },
     getAll() {
-      return $http.get(`${apiUrl}/albums`);
+      return $http.get(`${apiUrl}/albums`).then(res => res.data);
     },
     remove(id) {
       return $http.delete(`${apiUrl}/albums/${id}`)

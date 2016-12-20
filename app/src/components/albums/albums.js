@@ -10,6 +10,7 @@ controller.$inject = [ 'albumService' ];
 
 function controller(albums) {
   this.styles = styles;
+  // this.albumList = [];
 
   albums.get().then(returnedAlbums => {
     this.albumList = returnedAlbums;

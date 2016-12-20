@@ -1,8 +1,8 @@
-<div>
+<div ng-repeat="image in $ctrl.images" class="detail-view">
   <table>
-  <tr><td><b>Title:</b></td><td>{{ $ctrl.image.title }}</td></tr>
-  <tr><td><b>Link:</b></td><td>{{ $ctrl.image.link }}</td></tr>
-  <tr><td><b>Description:</b></td><td>{{ $ctrl.image.description }}</td></tr>
+  <tr><td><b>Title:</b></td><td>{{ image.title }}</td></tr>
+  <tr><td><b>Link:</b></td><td>{{ image.link }}</td></tr>
+  <tr><td><b>Description:</b></td><td>{{ image.description }}</td></tr>
   </table>
-  <button ng-class="$parent.imagesCtrl.styles['del-btn']" ng-click="$parent.imagesCtrl.remove($ctrl.image)">Delete</button>  
+  <button ng-click="$parent.imagesCtrl.remove($ctrl.image)">Delete</button>  
 </div>

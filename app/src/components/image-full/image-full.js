@@ -4,7 +4,7 @@ import styles from './image-full.scss';
 export default {
   template,
   bindings: {
-    image: '=',
+    images: '<',
   },
   controller
 };

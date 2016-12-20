@@ -3,6 +3,9 @@ import styles from './album.scss';
 
 export default {
   template,
+  bindings: {
+    album: '<'
+  },
   controller,
   controllerAs: 'albumCtrl'
 };

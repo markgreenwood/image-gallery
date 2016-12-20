@@ -3,6 +3,8 @@
 <div id="view-selector">
   <ul>
     <a ng-repeat="album in $ctrl.albumList"
+      ui-sref="album.details({ id: album._id })"        
+      ui-sref-active="tileActive"
       class="albumtile">
       {{ album.name }}
     </a>
@@ -12,5 +14,3 @@
 <h2>{{ albumsCtrl.currentAlbum }}</h2>
 
 <ui-view>Choose an album to display images</ui-view>
-      <!--ui-sref="images({ album_id: album._id })"        
-      ui-sref-active="tileActive"-->

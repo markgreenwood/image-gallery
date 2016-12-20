@@ -18,8 +18,16 @@ This was written as a lab assignment for Code Fellows 401 class.
 
 ## Tests
 
+### Unit Testing
+
 The accompanying test suites can be run using the 'npm test' command from the `/app`
 and `/server` subdirectories, as appropriate.
+
+### Sample Data for Demonstration
+
+You can populate a sample database by going to the `/server` subdirectory and running `node loadSampleData.js`. 
+Make sure you have an instance of Mongo running first. This will drop the existing database, so make sure you're 
+pointing to a database you can use just for testing.
 
 ## Contributors
 

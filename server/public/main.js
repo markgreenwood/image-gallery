@@ -56,15 +56,15 @@
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _services = __webpack_require__(48);
+	var _services = __webpack_require__(51);
 	
 	var _services2 = _interopRequireDefault(_services);
 	
-	var _angularUiRouter = __webpack_require__(52);
+	var _angularUiRouter = __webpack_require__(55);
 	
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 	
-	var _routes = __webpack_require__(53);
+	var _routes = __webpack_require__(56);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
@@ -32980,14 +32980,14 @@
 		"./about/about-shadow.js": 13,
 		"./about/about.js": 14,
 		"./albums/album/album.js": 18,
-		"./albums/albums.js": 19,
-		"./app/app.js": 23,
-		"./image-detail/image-detail.js": 27,
-		"./image-full/image-full.js": 31,
-		"./image-thumbnail/image-thumbnail.js": 35,
-		"./images/images.js": 39,
-		"./new-image/new-image.js": 43,
-		"./welcome/welcome.js": 47
+		"./albums/albums.js": 22,
+		"./app/app.js": 26,
+		"./image-detail/image-detail.js": 30,
+		"./image-full/image-full.js": 34,
+		"./image-thumbnail/image-thumbnail.js": 38,
+		"./images/images.js": 42,
+		"./new-image/new-image.js": 46,
+		"./welcome/welcome.js": 50
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33074,12 +33074,6 @@
 /***/ },
 /* 17 */,
 /* 18 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33088,11 +33082,61 @@
 	  value: true
 	});
 	
-	var _albums = __webpack_require__(20);
+	var _album = __webpack_require__(19);
+	
+	var _album2 = _interopRequireDefault(_album);
+	
+	var _album3 = __webpack_require__(20);
+	
+	var _album4 = _interopRequireDefault(_album3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  template: _album2.default,
+	  bindings: {
+	    album: '<'
+	  },
+	  controller: controller,
+	  controllerAs: 'albumCtrl'
+	};
+	
+	
+	controller.$inject = ['albumService'];
+	
+	function controller(albums) {
+	  // eslint-disable-line no-unused-vars
+	  this.styles = _album4.default;
+	}
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "<section ng-class=\"$ctrl.styles.album\">\n\n  <h2>{{$ctrl.album.name}}</h2>\n  \n  <h3>Images</h3>\n  <images images=\"$ctrl.album.images\"\n          album-id=\"$ctrl.album._id\">\n  </images>\n\n</section>";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 21 */,
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _albums = __webpack_require__(23);
 	
 	var _albums2 = _interopRequireDefault(_albums);
 	
-	var _albums3 = __webpack_require__(21);
+	var _albums3 = __webpack_require__(24);
 	
 	var _albums4 = _interopRequireDefault(_albums3);
 	
@@ -33100,8 +33144,7 @@
 	
 	exports.default = {
 	  template: _albums2.default,
-	  controller: controller,
-	  controllerAs: 'albumsCtrl'
+	  controller: controller
 	};
 	
 	
@@ -33111,6 +33154,7 @@
 	  var _this = this;
 	
 	  this.styles = _albums4.default;
+	  // this.albumList = [];
 	
 	  albums.get().then(function (returnedAlbums) {
 	    _this.albumList = returnedAlbums;
@@ -33123,20 +33167,20 @@
 	}
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul>\n    <a ng-repeat=\"album in albumsCtrl.albumList\"\n      class=\"albumtile\" \n      ui-sref=\"images({ album_id: album._id })\" \n      ui-sref-active=\"tileActive\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<h2>{{ albumsCtrl.currentAlbum }}</h2>\n\n<ui-view>Choose an album to display images</ui-view>\n ";
+	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul>\n    <a ng-repeat=\"album in $ctrl.albumList\"\n      ui-sref=\"album.details({ id: album._id })\"        \n      ui-sref-active=\"tileActive\"\n      class=\"albumtile\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<h2>{{ albumsCtrl.currentAlbum }}</h2>\n\n<ui-view>Choose an album to display images</ui-view>\n";
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 22 */,
-/* 23 */
+/* 25 */,
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33145,11 +33189,11 @@
 	  value: true
 	});
 	
-	var _app = __webpack_require__(24);
+	var _app = __webpack_require__(27);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _app3 = __webpack_require__(25);
+	var _app3 = __webpack_require__(28);
 	
 	var _app4 = _interopRequireDefault(_app3);
 	
@@ -33163,20 +33207,20 @@
 	};
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = "  <header>\n    <h1>Mark's Image Gallery</h1>\n    <nav>\n      <a ui-sref=\"welcome\" ui-sref-active=\"hilite\">Welcome</a>\n      <a ui-sref=\"albums\" ui-sref-active=\"hilite\">Albums</a>\n      <!--<a ui-sref=\"images\" ui-sref-active=\"hilite\">Images</a>-->\n      <a ui-sref=\"about\" ui-sref-active=\"hilite\">About</a>\n    </nav>\n  </header>\n\n  <main>\n    <ui-view></ui-view>\n  </main>\n\n  <footer>\n    &copy;2016 by Mark Greenwood \n  </footer>";
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 26 */,
-/* 27 */
+/* 29 */,
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33185,11 +33229,11 @@
 	  value: true
 	});
 	
-	var _imageDetail = __webpack_require__(28);
+	var _imageDetail = __webpack_require__(31);
 	
 	var _imageDetail2 = _interopRequireDefault(_imageDetail);
 	
-	var _imageDetail3 = __webpack_require__(29);
+	var _imageDetail3 = __webpack_require__(32);
 	
 	var _imageDetail4 = _interopRequireDefault(_imageDetail3);
 	
@@ -33198,7 +33242,7 @@
 	exports.default = {
 	  template: _imageDetail2.default,
 	  bindings: {
-	    image: '='
+	    images: '<'
 	  },
 	  controller: controller
 	};
@@ -33209,20 +33253,20 @@
 	}
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  <table>\n  <tr><td><b>Title:</b></td><td>{{ $ctrl.image.title }}</td></tr>\n  <tr><td><b>Link:</b></td><td>{{ $ctrl.image.link }}</td></tr>\n  <tr><td><b>Description:</b></td><td>{{ $ctrl.image.description }}</td></tr>\n  </table>\n  <button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$parent.imagesCtrl.remove($ctrl.image)\">Delete</button>  \n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"detail-view\">\n  <table>\n  <tr><td><b>Title:</b></td><td>{{ image.title }}</td></tr>\n  <tr><td><b>Link:</b></td><td>{{ image.link }}</td></tr>\n  <tr><td><b>Description:</b></td><td>{{ image.description }}</td></tr>\n  </table>\n  <button ng-click=\"$parent.imagesCtrl.remove($ctrl.image)\">Delete</button>  \n</div>";
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 30 */,
-/* 31 */
+/* 33 */,
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33231,11 +33275,11 @@
 	  value: true
 	});
 	
-	var _imageFull = __webpack_require__(32);
+	var _imageFull = __webpack_require__(35);
 	
 	var _imageFull2 = _interopRequireDefault(_imageFull);
 	
-	var _imageFull3 = __webpack_require__(33);
+	var _imageFull3 = __webpack_require__(36);
 	
 	var _imageFull4 = _interopRequireDefault(_imageFull3);
 	
@@ -33244,7 +33288,7 @@
 	exports.default = {
 	  template: _imageFull2.default,
 	  bindings: {
-	    image: '='
+	    images: '<'
 	  },
 	  controller: controller
 	};
@@ -33255,20 +33299,20 @@
 	}
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  <p><b>Title:</b> {{ $ctrl.image.title }}</p>\n  <p><b>Description:</b> {{ $ctrl.image.description }}</p>\n  <img ng-src=\"{{$ctrl.image.link}}\">\n  <button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$parent.imagesCtrl.remove($ctrl.image)\">Delete</button>\n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"full-view\">\n  <p><b>Title:</b> {{ image.title }}</p>\n  <p><b>Description:</b> {{ image.description }}</p>\n  <img ng-src=\"{{image.link}}\">\n  <button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$parent.imagesCtrl.remove(image)\">Delete</button>\n</div>";
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 34 */,
-/* 35 */
+/* 37 */,
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33277,11 +33321,11 @@
 	  value: true
 	});
 	
-	var _imageThumbnail = __webpack_require__(36);
+	var _imageThumbnail = __webpack_require__(39);
 	
 	var _imageThumbnail2 = _interopRequireDefault(_imageThumbnail);
 	
-	var _imageThumbnail3 = __webpack_require__(37);
+	var _imageThumbnail3 = __webpack_require__(40);
 	
 	var _imageThumbnail4 = _interopRequireDefault(_imageThumbnail3);
 	
@@ -33290,7 +33334,7 @@
 	exports.default = {
 	  template: _imageThumbnail2.default,
 	  bindings: {
-	    image: '='
+	    images: '<'
 	  },
 	  controller: controller
 	};
@@ -33301,20 +33345,20 @@
 	}
 
 /***/ },
-/* 36 */
+/* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  <img ng-src=\"{{$ctrl.image.link}}\" width=\"100px\">\n  <button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$parent.imagesCtrl.remove($ctrl.image)\">Delete</button>\n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"thumbnail-view\">\n  <img ng-src=\"{{image.link}}\" width=\"100px\">\n  <button ng-class=\"$parent.imagesCtrl.styles['del-btn']\" ng-click=\"$parent.imagesCtrl.remove($ctrl.image)\">Delete</button>\n</div>";
 
 /***/ },
-/* 37 */
+/* 40 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 38 */,
-/* 39 */
+/* 41 */,
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33323,11 +33367,11 @@
 	  value: true
 	});
 	
-	var _images = __webpack_require__(40);
+	var _images = __webpack_require__(43);
 	
 	var _images2 = _interopRequireDefault(_images);
 	
-	var _images3 = __webpack_require__(41);
+	var _images3 = __webpack_require__(44);
 	
 	var _images4 = _interopRequireDefault(_images3);
 	
@@ -33406,21 +33450,21 @@
 	}
 
 /***/ },
-/* 40 */
+/* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<section>\n  <div>\n    <button ui-sref=\"\">Details</button>\n    <button>Full</button>\n    <button>Thumbnails</button>\n    <!--<input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Details\" /> Details\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Full\" /> Full\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Thumbnail\" /> Thumbnail-->\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
+	module.exports = "<section>\n  <div>\n    <button ui-sref=\"album.details\">Details</button>\n    <button ui-sref=\"album.full\">Full</button>\n    <button ui-sref=\"album.thumbnails\">Thumbnails</button>\n    <!--<input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Details\" /> Details\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Full\" /> Full\n    <input type=\"radio\" ng-model=\"imagesCtrl.viewType\" ng-click=\"imagesCtrl.updateView()\" value=\"Thumbnail\" /> Thumbnail-->\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
 
 /***/ },
-/* 41 */
+/* 44 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"del-btn":"_1agfRw03w-VS9Q2LgbAmSS","selector":"_27ruoPG8Yo5DN7-7yzeXu6"};
 
 /***/ },
-/* 42 */,
-/* 43 */
+/* 45 */,
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33429,11 +33473,11 @@
 	  value: true
 	});
 	
-	var _newImage = __webpack_require__(44);
+	var _newImage = __webpack_require__(47);
 	
 	var _newImage2 = _interopRequireDefault(_newImage);
 	
-	var _newImage3 = __webpack_require__(45);
+	var _newImage3 = __webpack_require__(48);
 	
 	var _newImage4 = _interopRequireDefault(_newImage3);
 	
@@ -33473,21 +33517,21 @@
 	}
 
 /***/ },
-/* 44 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "<section ng-class=\"$ctrl.styles['new-image']\">\n  <table>\n  <tr>\n    <td><label>Title:</label></td>\n    <td><input ng-model=\"$ctrl.title\"></td>\n  </tr>\n  <tr>\n    <td><label>Link:</label></td>\n    <td><input ng-model=\"$ctrl.link\"></td>\n  </tr>\n  <tr>\n    <td><label>Description:</label></td>\n    <td><input ng-model=\"$ctrl.description\"></td>\n  </tr>\n  <tr>\n    <td><label>Album:</label></td>\n    <td><input ng-model=\"$ctrl.album\"></td>\n  </tr>\n  </table>\n  <button ng-class=\"$ctrl.styles['add-btn']\" ng-click=\"$ctrl.addNew()\">Add</button>\n</section>";
 
 /***/ },
-/* 45 */
+/* 48 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"new-image":"_1X7MnkLD5WTlhk_X6J5H8W","add-btn":"_1NpF_CZdusbYAYZPAJjBHx"};
 
 /***/ },
-/* 46 */,
-/* 47 */
+/* 49 */,
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33503,7 +33547,7 @@
 	};
 
 /***/ },
-/* 48 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33526,7 +33570,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var context = __webpack_require__(49);
+	var context = __webpack_require__(52);
 	
 	var _module = _angular2.default.module('services', []);
 	
@@ -33538,12 +33582,12 @@
 	exports.default = _module.name;
 
 /***/ },
-/* 49 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./album-service.js": 50,
-		"./image-service.js": 51
+		"./album-service.js": 53,
+		"./image-service.js": 54
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -33556,11 +33600,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 49;
+	webpackContext.id = 52;
 
 
 /***/ },
-/* 50 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33583,7 +33627,9 @@
 	      }
 	    },
 	    getAll: function getAll() {
-	      return $http.get(apiUrl + '/albums');
+	      return $http.get(apiUrl + '/albums').then(function (res) {
+	        return res.data;
+	      });
 	    },
 	    remove: function remove(id) {
 	      return $http.delete(apiUrl + '/albums/' + id).then(function (res) {
@@ -33599,7 +33645,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33631,7 +33677,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -41980,7 +42026,7 @@
 	//# sourceMappingURL=angular-ui-router.js.map
 
 /***/ },
-/* 53 */
+/* 56 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42009,6 +42055,7 @@
 	    name: 'album',
 	    url: '/albums/:id',
 	    abstract: true,
+	    default: '.details',
 	    resolve: {
 	      album: ['albumService', '$transition$', function (albums, t) {
 	        return albums.get(t.params().id);
@@ -42018,36 +42065,41 @@
 	      }]
 	    },
 	    component: 'album'
-	  });
-	
-	  $stateProvider.state({
+	  }).state({
 	    name: 'album.details',
 	    url: '/details',
-	    component: 'detailsView'
+	    component: 'imageDetail'
+	  }).state({
+	    name: 'album.thumbnails',
+	    url: '/thumbnails',
+	    component: 'imageThumbnail'
+	  }).state({
+	    name: 'album.full',
+	    url: '/full',
+	    component: 'imageFull'
 	  });
+	  // $stateProvider.state({
+	  //   name: 'images',
+	  //   url: '/:album_id',
+	  //   params: { albums: null },
+	  //   resolve: {
+	  //     albumId: [ '$transition$', t =>  { 
+	  //       console.log('Passed in album_id ', t.params().album_id);
+	  //       return t.params().album_id; 
+	  //     } ]
+	  //     // albumList: [ '$transition$', t => {
+	  //     //   console.log('t.params ', t.params());
+	  //     //   return t.params().albums;
+	  //     // }]
+	  //   },
+	  //   component: 'images'
+	  // });
 	
-	  $stateProvider.state({
-	    name: 'images',
-	    url: '/:album_id',
-	    params: { albums: null },
-	    resolve: {
-	      albumId: ['$transition$', function (t) {
-	        console.log('Passed in album_id ', t.params().album_id);
-	        return t.params().album_id;
-	      }]
-	      // albumList: [ '$transition$', t => {
-	      //   console.log('t.params ', t.params());
-	      //   return t.params().albums;
-	      // }]
-	    },
-	    component: 'images'
-	  });
-	
-	  $stateProvider.state({
-	    name: 'images.details',
-	    url: '/images',
-	    component: 'images'
-	  });
+	  // $stateProvider.state({
+	  //   name: 'images.details',
+	  //   url: '/images',
+	  //   component: 'images'
+	  // });
 	
 	  // $stateProvider.state({
 	  //   name: 'images',

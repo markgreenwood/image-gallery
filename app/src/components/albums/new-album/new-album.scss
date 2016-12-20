@@ -1,0 +1,15 @@
+@import 'colors';
+
+:local(.new-album) {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background: $bg-color-newalbum;
+}
+
+:local(.add-btn) {
+  background-color: darkgreen;
+  color: white;
+  font-size: 12pt;
+}

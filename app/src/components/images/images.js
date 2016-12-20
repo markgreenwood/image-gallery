@@ -23,12 +23,13 @@ function controller(images, albums) {
   self.loading = true;
   // self.imageList = [];
 
-  images.get(self.albumId).then(rtndImages => {
-    self.loading = false;
-    self.imageList = rtndImages;
-  });
+  // images.get(self.albumId).then(rtndImages => {
+  //   self.loading = false;
+  //   self.imageList = rtndImages;
+  // });
 
   albums.get().then(rtndAlbums => {
+    self.loading = false;
     self.albumList = rtndAlbums;
   });
 
@@ -47,7 +48,7 @@ function controller(images, albums) {
         .add(image)
         .then(savedImage => {
           self.loading = false;
-          self.imageList.push(savedImage);
+          self.images.push(savedImage);
         });
     }
     else {
@@ -59,7 +60,7 @@ function controller(images, albums) {
           images.add(image)
             .then(savedImage => {
               self.loading = false;
-              self.imageList.push(savedImage);
+              self.images.push(savedImage);
             });
         });
     }
@@ -70,8 +71,8 @@ function controller(images, albums) {
     images.remove(image._id)
       .then(() => {
         self.loading = false;
-        const index = self.imageList.indexOf(image);
-        if (index > -1) self.imageList.splice(index, 1);
+        const index = self.images.indexOf(image);
+        if (index > -1) self.images.splice(index, 1);
       });
   };
 

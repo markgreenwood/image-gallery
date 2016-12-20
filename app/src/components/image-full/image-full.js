@@ -6,6 +6,9 @@ export default {
   bindings: {
     images: '<'
   },
+  require: {
+    imagesCtrl: '^images'
+  },
   controller
 };
 

@@ -11,4 +11,8 @@ $max-width: 800px;
   background: $bg-color-full;
   vertical-align: top;
   max-width: $max-width;
+
+  img {
+    max-width: 98%;
+  }
 }

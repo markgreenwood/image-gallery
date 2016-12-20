@@ -6,6 +6,10 @@
   margin: 5px;
   border-radius: 5px;
   background: $bg-color-newimage;
+
+  h3 {
+    margin: 2px 0px;
+  }
 }
 
 :local(.add-btn) {

@@ -12,10 +12,23 @@ td {
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif; }
+a {
+  border: 2px outset lightgrey;
+  text-decoration: none;
+  padding: 0.2em;
+  background-color: lightgray; }
+
+a.hilite, a:hover {
+  background: steelblue;
+  color: white; }
+
 img {
   max-width: 200px;
   float: left;
   padding: 5px; }
+
+header, footer {
+  display: block; }
 .albumtile {
   width: 150px;
   background-color: tan;
@@ -27,6 +40,29 @@ img {
   .albumtile .tileActive {
     background-color: darkgreen;
     color: white; }
+._2bZcMGysoI3_64C86vASQn {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background: beige; }
+  ._2bZcMGysoI3_64C86vASQn h3 {
+    margin: 2px 0px; }
+
+._3hQlRXeWmlsHlnZ2OZ3qCc {
+  background-color: darkgreen;
+  color: white;
+  font-size: 12pt; }
+a {
+  border: 2px outset lightgrey;
+  text-decoration: none;
+  padding: 0.2em;
+  background-color: lightgray; }
+
+a.hilite, a:hover {
+  background: steelblue;
+  color: white; }
+
 header {
   display: block; }
 
@@ -61,6 +97,8 @@ nav a.hilite, a:hover {
   background: beige;
   vertical-align: top;
   max-width: 800px; }
+  .full-view img {
+    max-width: 98%; }
 .thumbnail-view {
   border: 1px solid;
   padding: 5px;
@@ -103,6 +141,8 @@ https://bavotasan.com/2011/style-select-box-using-only-css/
   margin: 5px;
   border-radius: 5px;
   background: beige; }
+  ._1X7MnkLD5WTlhk_X6J5H8W h3 {
+    margin: 2px 0px; }
 
 ._1NpF_CZdusbYAYZPAJjBHx {
   background-color: darkgreen;

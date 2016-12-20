@@ -85,37 +85,37 @@ describe ('images component', () => {
 
     // test that the component loads the images
     it ('loads images', done => {
-      const component = $component('images', { imageService, albumService }, { albumId: 1, albumList: albums });
+      const component = $component('images', { imageService, albumService }, { images, albumId: 1, albumList: albums });
       expect(component.loading).to.be.ok;
       setTimeout(() => {
-        expect(component.imageList).to.deep.equal(images);
+        expect(component.images).to.deep.equal(images);
         expect(component.loading).to.not.be.ok;
         done();
       });
     });
 
     it ('adds an image', done => {
-      const component = $component('images', { imageService, albumService }, { albumId: 1, albumList: albums });
+      const component = $component('images', { imageService, albumService }, { images, albumId: 1, albumList: albums });
       component.add(image);
       expect(component.loading).to.be.ok;
 
       setTimeout(() => {
-        expect(component.imageList.length).to.equal(3);
-        expect(component.imageList[2]).to.deep.equal(image);
+        expect(component.images.length).to.equal(3);
+        expect(component.images[2]).to.deep.equal(image);
         expect(component.loading).to.not.be.ok;
         done();
       });
     });
 
     it ('removes an image', done => {
-      const component = $component('images', { imageService, albumService });
+      const component = $component('images', { imageService, albumService }, { images, albumId: 1, albumList: albums });
       image._id = 1;
       component.remove(image);
       expect(component.loading).to.be.ok;
 
       setTimeout(() => {
-        expect(component.imageList.length).to.equal(2);
-        expect(component.imageList).to.deep.equal(images);
+        expect(component.images.length).to.equal(2);
+        expect(component.images).to.deep.equal(images);
         expect(component.loading).to.not.be.ok;
         done();
       });

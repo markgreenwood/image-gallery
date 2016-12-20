@@ -6,8 +6,12 @@ export default {
   bindings: {
     images: '<'
   },
+  require: {
+    imagesCtrl: '^images'
+  },
   controller
 };
+
 
 function controller() {
   this.styles = styles;

@@ -1,10 +1,9 @@
-<section ng-class="$ctrl.styles.album">
+<section ng-class="albumCtrl.styles.album">
 
-  <h2>{{$ctrl.album.name}}</h2>
+  <h2>{{albumCtrl.album.name}}</h2>
   
-  <h3>Images</h3>
-  <images images="$ctrl.album.images"
-          album-id="$ctrl.album._id">
+  <!--<h3>Images</h3>-->
+  <images images="albumCtrl.album.images">
   </images>
 
 </section>

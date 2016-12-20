@@ -10,8 +10,8 @@ export default {
   controllerAs: 'albumCtrl'
 };
 
-controller.$inject = [ 'albumService' ];
+// controller.$inject = [ 'albumService' ];
 
-function controller(albums) { // eslint-disable-line no-unused-vars
+function controller() { // eslint-disable-line no-unused-vars
   this.styles = styles;
 }

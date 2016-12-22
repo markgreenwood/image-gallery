@@ -1,7 +1,7 @@
 <h2>Albums</h2>
 
 <div id="view-selector">
-  <ul>
+  <ul id="album-list">
     <a ng-repeat="album in $ctrl.albumList"
       ui-sref="album.thumbnails({ id: album._id })"        
       ui-sref-active="tileActive"

@@ -27,7 +27,7 @@ img {
   float: left;
   padding: 5px; }
 
-header, footer {
+header, section, footer {
   display: block; }
 .albumtile {
   width: 150px;
@@ -67,6 +67,7 @@ header {
   display: block; }
 
 footer {
+  padding: 0.2em;
   display: block; }
 
 nav a {
@@ -102,15 +103,12 @@ nav a.hilite, a:hover {
   .full-view img, .full-view button {
     display: block; }
 .thumbnail-view {
-  border: 1px solid;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  background: beige;
+  background: transparent;
   vertical-align: top;
-  display: table-cell; }
-  .thumbnail-view img, .thumbnail-view button {
-    display: block; }
+  display: inline-block; }
 /* Styling ideas from 
 https://bavotasan.com/2011/style-select-box-using-only-css/
 */
@@ -139,6 +137,9 @@ https://bavotasan.com/2011/style-select-box-using-only-css/
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
+
+#view-selector button {
+  background-color: lightgray; }
 ._1X7MnkLD5WTlhk_X6J5H8W {
   border: 1px solid black;
   padding: 5px;

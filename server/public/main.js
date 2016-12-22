@@ -33166,7 +33166,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul>\n    <a ng-repeat=\"album in $ctrl.albumList\"\n      ui-sref=\"album.thumbnails({ id: album._id })\"        \n      ui-sref-active=\"tileActive\"\n      class=\"albumtile\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<new-album add=\"$ctrl.add\"></new-album>\n\n<ui-view>Choose an album to display images</ui-view>\n";
+	module.exports = "<h2>Albums</h2>\n\n<div id=\"view-selector\">\n  <ul id=\"album-list\">\n    <a ng-repeat=\"album in $ctrl.albumList\"\n      ui-sref=\"album.thumbnails({ id: album._id })\"        \n      ui-sref-active=\"tileActive\"\n      class=\"albumtile\">\n      {{ album.name }}\n    </a>\n  </ul>\n</div>\n\n<new-album add=\"$ctrl.add\"></new-album>\n\n<ui-view>Choose an album to display images</ui-view>\n";
 
 /***/ },
 /* 24 */
@@ -33417,7 +33417,7 @@
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"thumbnail-view\">\n  <img ng-src=\"{{image.link}}\" width=\"100px\">\n  <button ng-class=\"$ctrl.imagesCtrl.styles['del-btn']\" ng-click=\"$ctrl.imagesCtrl.remove(image)\">Delete</button>\n</div>";
+	module.exports = "<div ng-repeat=\"image in $ctrl.images\" class=\"thumbnail-view\">\n  <div>\n    <img ng-src=\"{{image.link}}\" height=\"100px\">\n  </div>\n  <button ng-class=\"$ctrl.imagesCtrl.styles['del-btn']\" ng-click=\"$ctrl.imagesCtrl.remove(image)\">Delete</button>\n</div>";
 
 /***/ },
 /* 44 */
@@ -33521,7 +33521,7 @@
 /* 47 */
 /***/ function(module, exports) {
 
-	module.exports = "<section>\n  <div>\n    <button ui-sref=\"album.details\">Details</button>\n    <button ui-sref=\"album.full\">Full</button>\n    <button ui-sref=\"album.thumbnails\">Thumbnails</button>\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
+	module.exports = "<section>\n  <div>\n    <input type=\"checkbox\" ng-model=\"delEnable\">Enable delete?\n  </div>\n  <div id=\"view-selector\">\n    <button ui-sref=\"album.details\">Details</button>\n    <button ui-sref=\"album.full\">Full</button>\n    <button ui-sref=\"album.thumbnails\">Thumbnails</button>\n  </div>\n\n  <!--Loading indicator...-->\n  <div ng-class=\"imagesCtrl.styles['loader']\" ng-if=\"imagesCtrl.loading\">Loading...</div>\n\n  <!--List of images, could be one of three display modes-->\n  <div>\n    <ui-view></ui-view>\n  </div>\n\n  <!--Form to add a new image-->\n  <new-image add=\"imagesCtrl.add\"></new-image>\n</section>";
 
 /***/ },
 /* 48 */
